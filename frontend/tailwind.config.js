@@ -1,0 +1,68 @@
+/** @type {import('tailwindcss').Config} */
+const colors = require('tailwindcss/colors')
+
+module.exports = {
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
+  safelist: [
+    'text-primary/80',
+    'text-primary/60',
+    'text-primary/40',
+    'text-primary/20',
+  ],
+  theme: {
+    darkMode: 'class',
+    extend: {
+      screens: {
+        "400": '400px',
+        "500": '500px',
+        "600": '600px',
+        "700": '700px',
+        "800": '800px',
+        "900": '900px',
+        "1000": '1000px',
+        "1100": '1100px',
+        "1200": '1200px',
+        "1250": '1250px',
+        "1300": '1300px',
+        "1400": '1400px',
+        "1520": '1520px',
+        "1600": '1600px',
+        "1700": '1700px',
+        "1800": '1800px',
+        "1850": '1850px',
+        "1900": '1900px',
+        "2000": '2000px',
+        "2100": '2100px',
+        "2200": '2200px',
+        "2300": '2300px',
+        "2400": '2400px',
+        "2500": '2500px',
+        "2600": '2600px',
+      },
+      colors: {
+        ...colors,
+        "primary": "#5149AB",
+        "secondary": "#1172BA",
+        "accent": "#0CC5C5",
+        "neutral": "#292524",
+        "base-100": "#1c1917",
+        "info": "#67e8f9",
+        "success": "#6ee7b7",
+        "warning": "#fde047",
+        "error": "#F87272",
+        "lightGray": "#F2F2F2",
+        "primaryHover": "#5149AB",
+        "secondaryHover": "#0BB2D7",
+        "blurBlue": "#123A60",
+        "white": "#FFFFFF",
+        "black": "#231F20",
+      },
+      // color: { ...colors }
+    },
+  },
+  plugins: [require("daisyui")],
+}

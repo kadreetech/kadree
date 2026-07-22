@@ -1,0 +1,50 @@
+name: Deploy Next.js (frontend) to FTP
+
+on:
+  push:
+    branches:
+      - main  # or whatever branch triggers your deploy
+
+  workflow_dispatch: # allows manual triggering of the workflow
+
+  repository_dispatch: # listen for external dispatches
+    types:
+      - sanity-published
+
+jobs:
+  build-and-ftp-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout the repo
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Use Node.js (in the 'frontend' directory)
+      - name: Use Node 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+
+      # 3. Install dependencies inside frontend/
+      - name: Install npm packages (frontend/)
+        working-directory: frontend
+        run: npm ci
+
+      # 4. Build + export Next.js (frontend/)
+      - name: Build and Export Next.js (frontend/)
+        working-directory: frontend
+        run: |
+          npm run build
+          npm run export
+
+      # 5. FTP Deploy the static output folder (frontend/out/)
+      - name: FTP Deploy (frontend/out/)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PSSW }}
+          local-dir: frontend/out/
+          server-dir: /public_html/
+          delete: false

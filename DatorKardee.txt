@@ -1,0 +1,40 @@
+[2:11 p.m., 29/6/2026] Juan Camilo Kam: Hernan, 
+
+A continuación están las instrucciones para que instale el sitio web de la misma forma que se encuentra funcionando en mi hosting:
+
+
+REQUERIMIENTOS:
+- Tener una cuenta de Sanity.io
+- Tener una cuenta de GitHub
+- Tener una cuenta de Netlify
+- Tener una cuenta de SendGrid
+- Tener instalado Node.js 24.x en su computador
+- Descargar el archivo de la base de datos que se envió en febrero de este año
+
+
+SANITY.IO (Backend)
+1. Cree un proyecto nuevo
+2. En su computador, en la carpeta donde tiene el archivo descargado, corra el siguiente comando (reemplace <<PROJECT_ID>> por el ID del proyecto que acabo de crear): npx sanity dataset import production.tar.gz production --project <<PROJECT_ID>>
+
+
+GITHUB (Frontend)
+1. Cree un nuevo repositorio
+2. Suba todos los archivos del sitio web que se enviaron a través de WeTransfer.
+
+NETLIFY (Hosting)
+1. Cree un proyecto nuevo
+2. Conecte el repositorio de Github que creó en el paso anterior
+3. En la configuración de Build, debe poner que construya desde la carpeta frontend. Revise la imagen anexa. 
+
+Hasta aquí, ya debería poder ver el sitio en la URL de prueba que le creó Netlify.
+
+Lo siguiente es para que la salida a producción:
+
+SENDGRID (Email del formulario)
+1. Debe crear una nueva API KEY en el portal de ellos
+2. Cuando la tenga, en el proyecto de Netlify debe crear una variable de ambiente que se llame `SENDGRID_API_KEY`y pegar la llave ahí.
+
+DOMINIO
+En Netlify debe conectar el dominio que ya tienen. Para esto, debe seguir los pasos que le pida Netlify. Haga un backup de los registros del DNS, para evitar problemas, y luego puede reemplazar o borrar los registros relacionados con mi hosting, para que no tenga problema.
+[2:11 p.m., 29/6/2026] Juan Camilo Kam: KdRW3Bx1te
+
