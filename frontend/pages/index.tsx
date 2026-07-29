@@ -34,8 +34,7 @@ export async function getStaticProps() {
   return {
     props: {
       menu,
-      page,
-      
+      page,      
       stepGraphics,
       ctas,
       forms
