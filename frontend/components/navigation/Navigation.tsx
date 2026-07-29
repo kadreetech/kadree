@@ -67,13 +67,13 @@ export const Navigation = ({ menu, children }: INavigation): ReactElement => {
                 })}
               </ul>
               {/* DESKTOP LANGUAGE TOGGLE */}
-              {/* <div className='hidden md:flex flex-row justify-center items-center'>
+             <div className='hidden md:flex flex-row justify-center items-center'>
                 {lang === Lang.EN ?
                   <button onClick={setLang}>ES</button>
                   :
                   <button onClick={setLang}>EN</button>
                 }
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
