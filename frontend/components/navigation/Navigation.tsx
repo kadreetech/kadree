@@ -113,13 +113,13 @@ export const Navigation = ({ menu, children }: INavigation): ReactElement => {
               }
             })}
             {/* MOBILE LANGUAGE TOGGLE */}
-            {/* <div className='mt-8 w-full flex flex-row justify-center items-center text-sm'>
+           <div className='mt-8 w-full flex flex-row justify-center items-center text-sm'>
               {lang === Lang.EN ?
                 <button onClick={setLang}>ESPAÑOL</button>
                 :
                 <button onClick={setLang}>ENGLISH</button>
               }
-            </div> */}
+            </div> 
           </ul>
         </div>
       </div>
