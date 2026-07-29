@@ -20,6 +20,7 @@ const Home: NextPage<any, any> = ({ menu, page, stepGraphics, ctas, forms }: IMa
 export const client = createClient({
   projectId: "z72wzr8g",
   dataset: "production",
+  
   apiVersion: "2022-11-03",
   useCdn: false
 });
