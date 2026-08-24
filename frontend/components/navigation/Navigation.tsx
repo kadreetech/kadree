@@ -2,7 +2,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ReactElement, ReactNode } from 'react'
 import { Lang, useMainContext } from '../../context/context'
-import logo from './kadree-tech-white.svg'
 import { Footer } from './Footer'
 import styles from './Navigation.module.css'
 
@@ -18,13 +17,16 @@ export const Navigation = ({ menu, children }: INavigation): ReactElement => {
       <header className={styles.header}>
         <div className={styles.navbar}>
           <Link href="/">
-            <a className={styles.logo}><Image src={logo} alt="Kadree Tech" priority /></a>
+            <a className={styles.logo}><Image src="/img/redesign/logo-kadree.svg" alt="Kadree Tech" width={141} height={50} priority /></a>
           </Link>
           <input id="site-menu" className={styles.menuToggle} type="checkbox" />
           <label htmlFor="site-menu" className={styles.menuButton} aria-label={lang === Lang.ES ? 'Abrir menú' : 'Open menu'}><span /><span /><span /></label>
           <nav className={styles.nav} aria-label="Principal">
             <div className={styles.servicesMenu}>
-              <button type="button">{lang === Lang.ES ? 'Servicios' : 'Services'} <span aria-hidden="true">⌄</span></button>
+              <button type="button">
+                <span>{lang === Lang.ES ? 'Servicios' : 'Services'}</span>
+                <Image src="/img/redesign/menu-arrow.svg" alt="" width={12} height={7} />
+              </button>
               <div className={styles.dropdown}>
                 <Link href="/staff-augmentation"><a>{lang === Lang.ES ? 'Tercerización de talento TI' : 'Staff augmentation'}</a></Link>
                 <Link href="/custom-software"><a>{lang === Lang.ES ? 'Desarrollo a la medida' : 'Custom software development'}</a></Link>

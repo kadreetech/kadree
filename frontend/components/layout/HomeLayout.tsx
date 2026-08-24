@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { useNextSanityImage } from 'next-sanity-image'
 import { Lang, useMainContext } from '../../context/context'
 import Map2XL from '../../images/world_2xl.png'
+import MapXS from '../../images/world_xs.png'
 import { client } from '../../pages'
 import { ParticlesHome } from '../hero/Hero'
 import { Navigation } from '../navigation/Navigation'
@@ -121,7 +122,8 @@ export const HomeLayout = ({ menu, page, stepGraphics }: IMainLayout) => {
 
           <div className={styles.mapBlock}>
             <h2>{text.geography}</h2>
-            <div className={styles.mapImage}><Image src={Map2XL} alt={lang === Lang.ES ? 'Zonas horarias donde trabaja Kadree Tech' : 'Time zones where Kadree Tech works'} /></div>
+            <div className={`${styles.mapImage} ${styles.mapDesktop}`}><Image src={Map2XL} alt={lang === Lang.ES ? 'Zonas horarias donde trabaja Kadree Tech' : 'Time zones where Kadree Tech works'} /></div>
+            <div className={`${styles.mapImage} ${styles.mapMobile}`}><Image src={MapXS} alt={lang === Lang.ES ? 'Zonas horarias donde trabaja Kadree Tech' : 'Time zones where Kadree Tech works'} /></div>
             <p>{text.closing}</p>
             <a className={styles.secondaryButton} href="mailto:info@kadreetech.com">{text.contact}</a>
           </div>
