@@ -30,7 +30,7 @@
 .benefitCard { height: 120px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 8px; background: rgba(255,255,255,.1); }
 .benefitCard h3 { margin-top: 10px; font-size: 16px; font-weight: 600; }
 .mapBlock { position: relative; padding: 54px 0 44px; text-align: center; }
-.mapBlock > h2 { position: relative; z-index: 2; margin: 0 auto -54px; padding: 0 24px; font-size: clamp(42px, 6vw, 76px); line-height: 1; font-weight: 600; letter-spacing: -.025em; color: #0cc5c5; background: linear-gradient(90deg, #0cc5c5 0%, #1172ba 52%, #0cc5c5 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.mapBlock > h2 { position: relative; z-index: 2; margin: 0 auto -54px; padding: 0 24px; font-size: clamp(42px, 6vw, 76px); line-height: 1; font-weight: 700; letter-spacing: 0; color: #fff; -webkit-text-fill-color: #fff; mix-blend-mode: overlay; }
 .mapImage { width: 100%; max-width: none; margin: 0; }
 .mapImage img { width: 100%; height: auto; }
 .mapMobile { display: none; }
@@ -70,8 +70,8 @@
   .difference { padding: 52px 20px 34px; }
   .difference > h2 { font-size: 26px; }
   .benefitGrid { gap: 18px; }
-  .mapBlock { padding: 52px 16px 54px; }
-  .mapBlock > h2 { max-width: 350px; margin-bottom: 30px; padding: 0; font-size: 36px; line-height: 1.08; }
+  .mapBlock { padding: 52px 0 54px; }
+  .mapBlock > h2 { position: absolute; top: 100px; left: 50%; width: calc(100% - 32px); max-width: 350px; margin: 0; padding: 0; transform: translateX(-50%); font-size: clamp(31px, 9vw, 36px); line-height: 1.05; }
   .mapDesktop { display: none; }
   .mapMobile { display: block; width: 100%; max-width: 520px; }
   .mapBlock > p { margin-top: 26px; }
