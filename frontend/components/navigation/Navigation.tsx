@@ -32,7 +32,11 @@ export const Navigation = ({ menu, children }: INavigation): ReactElement => {
               </div>
             </div>
             <Link href="/about-us"><a>{lang === Lang.ES ? 'Nosotros' : 'About us'}</a></Link>
-            <button className={styles.language} onClick={setLang} aria-label={lang === Lang.ES ? 'Cambiar a inglés' : 'Switch to Spanish'}>⌁ {lang === Lang.ES ? 'EN' : 'ES'}</button>
+            <a className={styles.contact} href="mailto:info@kadreetech.com">{lang === Lang.ES ? 'Contáctanos' : 'Contact us'}</a>
+            <button className={styles.language} onClick={setLang} aria-label={lang === Lang.ES ? 'Cambiar a inglés' : 'Switch to Spanish'}>
+              <Image src="/img/redesign/language.svg" alt="" width={16} height={16} />
+              <span>{lang === Lang.ES ? 'EN' : 'ES'}</span>
+            </button>
           </nav>
         </div>
       </header>
