@@ -31,7 +31,7 @@
 .benefitCard h3 { margin-top: 10px; font-size: 16px; font-weight: 600; }
 .mapBlock { position: relative; padding: 54px 0 44px; text-align: center; }
 .mapBlock > h2 { position: relative; z-index: 2; margin: 0 auto -54px; padding: 0 24px; font-size: clamp(42px, 6vw, 76px); line-height: 1; font-weight: 600; letter-spacing: -.025em; color: #0cc5c5; background: linear-gradient(90deg, #0cc5c5 0%, #1172ba 52%, #0cc5c5 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.mapImage { width: min(1600px, calc(100% - 48px)); max-width: none; margin: 0 auto; }
+.mapImage { width: 100%; max-width: none; margin: 0; }
 .mapImage img { width: 100%; height: auto; }
 .mapMobile { display: none; }
 .mapBlock > p { margin: -48px auto 0; padding: 0 24px; font-size: 16px; }
