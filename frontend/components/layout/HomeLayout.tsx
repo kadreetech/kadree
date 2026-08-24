@@ -5,7 +5,7 @@ import Map2XL from '../../images/world_2xl.png'
 import MapXS from '../../images/world_xs.png'
 import { client } from '../../pages'
 import { ParticlesHome } from '../hero/Hero'
-import { Navigation } from '../navigation/Navigation'
+import { HomeNavigation } from '../navigation/HomeNavigation'
 import styles from '../../styles/HomeRedesign.module.css'
 
 export interface IMainLayout {
@@ -27,9 +27,9 @@ const translations = {
     heroBody: 'Te acompañamos con desarrollo de software, talento TI y consultoría especializada, para que te enfoques en lo que mejor sabes hacer: tu negocio.',
     contact: 'Contáctanos',
     services: [
-      { icon: '/img/redesign/staff.svg', title: 'Tercerización de talento TI', body: 'Ingenieros calificados, integrados a tu equipo sin fricción.' },
-      { icon: '/img/redesign/software.svg', title: 'Desarrollo de software a la medida', body: 'Soluciones digitales diseñadas para tu negocio.' },
-      { icon: '/img/redesign/consulting.svg', title: 'Consultoría y capacitación en TI', body: 'Acompañamiento experto para decisiones tecnológicas más acertadas.' },
+      { icon: '/img/redesign/staff.svg', title: ['Tercerización de talento', 'TI'], body: 'Ingenieros calificados, integrados a tu equipo sin fricción.' },
+      { icon: '/img/redesign/software.svg', title: ['Desarrollo de software a', 'la medida'], body: 'Soluciones digitales diseñadas para tu negocio.' },
+      { icon: '/img/redesign/consulting.svg', title: ['Consultoría y', 'capacitación en TI'], body: 'Acompañamiento experto para decisiones tecnológicas más acertadas.' },
     ],
     processTitle: 'Amplía tu equipo de desarrollo',
     processTime: '10 días, de la solicitud a la terna',
@@ -48,9 +48,9 @@ const translations = {
     heroBody: 'We support you with software development, IT talent and specialized consultancy, so you can focus on what you do best: your business.',
     contact: 'Contact us',
     services: [
-      { icon: '/img/redesign/staff.svg', title: 'IT staff augmentation', body: 'Qualified engineers, integrated into your team without friction.' },
-      { icon: '/img/redesign/software.svg', title: 'Custom software development', body: 'Digital solutions designed for your business.' },
-      { icon: '/img/redesign/consulting.svg', title: 'IT consulting and training', body: 'Expert guidance for more informed technology decisions.' },
+      { icon: '/img/redesign/staff.svg', title: ['IT staff', 'augmentation'], body: 'Qualified engineers, integrated into your team without friction.' },
+      { icon: '/img/redesign/software.svg', title: ['Custom software', 'development'], body: 'Digital solutions designed for your business.' },
+      { icon: '/img/redesign/consulting.svg', title: ['IT consulting', 'and training'], body: 'Expert guidance for more informed technology decisions.' },
     ],
     processTitle: 'Expand your development team',
     processTime: '10 days, from request to shortlist',
@@ -74,7 +74,7 @@ export const HomeLayout = ({ menu, page, stepGraphics }: IMainLayout) => {
   const sanitySteps = stepGraphics?.find((item) => item._id === stepsReference)?.stepsgraphics_collection || []
 
   return (
-    <Navigation menu={menu}>
+    <HomeNavigation menu={menu}>
       <main className={styles.page}>
         <section className={styles.hero}>
           <div className={styles.particles}><ParticlesHome /></div>
@@ -87,9 +87,9 @@ export const HomeLayout = ({ menu, page, stepGraphics }: IMainLayout) => {
 
         <section className={styles.services} aria-label={lang === Lang.ES ? 'Servicios' : 'Services'}>
           {text.services.map((service) => (
-            <article className={styles.serviceCard} key={service.title}>
+            <article className={styles.serviceCard} key={service.title.join('-')}>
               <Image src={service.icon} alt="" width={72} height={72} />
-              <h2>{service.title}</h2>
+              <h2>{service.title[0]}<br />{service.title[1]}</h2>
               <p>{service.body}</p>
             </article>
           ))}
@@ -129,7 +129,7 @@ export const HomeLayout = ({ menu, page, stepGraphics }: IMainLayout) => {
           </div>
         </section>
       </main>
-    </Navigation>
+    </HomeNavigation>
   )
 }
 
