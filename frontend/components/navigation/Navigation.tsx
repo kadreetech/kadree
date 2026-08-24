@@ -2,127 +2,42 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ReactElement, ReactNode } from 'react'
 import { Lang, useMainContext } from '../../context/context'
-import logo from './kadree-tech-color.svg'
+import logo from './kadree-tech-white.svg'
 import { Footer } from './Footer'
+import styles from './Navigation.module.css'
 
+interface INavigation { menu: any[]; children: ReactNode }
 
-interface INavigation {
-  menu: any[]
-  children: ReactNode
-}
 export const Navigation = ({ menu, children }: INavigation): ReactElement => {
-  const { lang, setLang } = useMainContext()
-  const menuDocument = menu.find(x => x['__i18n_lang'] === lang)
-  const menuOptions: any[] = menuDocument?.menu_setting?.menu_collection;
-
-  const menuFooter = menuDocument?.footer_setting
+  const { lang = Lang.ES, setLang } = useMainContext()
+  const menuDocument = menu.find((item) => item['__i18n_lang'] === lang) || menu[0]
+  const footer = menuDocument?.footer_setting
 
   return (
-    <div className="drawer scrollbar-hide relative">
-      <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content overflow-auto flex flex-col w-screen overflow-x-hidden relative bg-white scroll-smooth">
-        {/* <!-- Navbar --> */}
-        <div className="w-full flex bg-white shadow-lg shadow-indigo-800/10 py-2 flex-row sticky top-0 z-50">
-          <div className="flex flex-row mx-auto max-w-[1280px] w-full md:mx-auto justify-between">
-            <div className="flex-none">
-              <Link href="/">
-                <a className="btn btn-ghost hover:bg-transparent">
-                  <Image src={logo} alt={'Kadree Tech Logo'} priority />
-                </a>
-              </Link>
-            </div>
-            <div className="flex-none">
-              <label htmlFor="my-drawer" tabIndex={0} className="btn btn-ghost hover:bg-transparent md:hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-              </label>
-            </div>
-            <div className='hidden md:flex p-0 pr-4 justify-center flex-row items-center text-sm'>
-
-              <ul className="flex flex-row justify-end  h-fit mr-2">
-                {menuOptions && (menuOptions as any[]).map((x: any, k: number) => {
-                  return (
-                    <li key={`menu-item-${x.link_link}`}
-                      className={`active:bg-primary transition-all ease-in-out cursor-pointer active:text-white hover:text-white md:hover:bg-accent mr-2 rounded-md
-                      ${k >= (menuOptions.length - 1) ? 'bg-primary text-white shadow-lg shadow-primary/50' : 'text-black'}`
-                      }>
-                      {k === 0 ?
-                        <div className="dropdown dropdown-bottom dropdown-hover">
-                          <label htmlFor="submenu" tabIndex={0} className='py-3 px-4 flex justify-center items-center'>
-                            {x.link_label}
-                          </label>
-                          <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-primary rounded-md w-52">
-                            <li><Link href={'staff-augmentation'} className='text-white'>{lang == Lang.EN ? 'Staff Augmentation' : 'Tercerización'}</Link></li>
-                            <li><Link href={'custom-software'} className='text-white'>{lang == Lang.EN ? 'Custom Software Development' : 'Desarrollo a la Medida'}</Link></li>
-                            <li><Link href={'cyber-security'} className='text-white'>{lang == Lang.EN ? 'Cyber Security' : 'Seguridad Cibernética'}</Link></li>
-                            <li><Link href={'it-consultancy-and-training'} className='text-white'>{lang == Lang.EN ? 'IT Consultancy and Training' : 'Consultoría y Entrenamiento'}</Link></li>
-                          </ul>
-                        </div>
-                        :
-                        <div className='py-3 px-4'>
-                          <Link href={x.link_link.includes('#') ? x.link_link : `/${x.link_link}`} className='cursor-pointer'>{x.link_label}</Link>
-                        </div>
-                      }
-                    </li>
-                  )
-                })}
-              </ul>
-              {/* DESKTOP LANGUAGE TOGGLE */}
-             <div className='hidden md:flex flex-row justify-center items-center'>
-                {lang === Lang.EN ?
-                  <button onClick={setLang}>ES</button>
-                  :
-                  <button onClick={setLang}>EN</button>
-                }
+    <div className={styles.shell}>
+      <header className={styles.header}>
+        <div className={styles.navbar}>
+          <Link href="/">
+            <a className={styles.logo}><Image src={logo} alt="Kadree Tech" priority /></a>
+          </Link>
+          <input id="site-menu" className={styles.menuToggle} type="checkbox" />
+          <label htmlFor="site-menu" className={styles.menuButton} aria-label={lang === Lang.ES ? 'Abrir menú' : 'Open menu'}><span /><span /><span /></label>
+          <nav className={styles.nav} aria-label="Principal">
+            <div className={styles.servicesMenu}>
+              <button type="button">{lang === Lang.ES ? 'Servicios' : 'Services'} <span aria-hidden="true">⌄</span></button>
+              <div className={styles.dropdown}>
+                <Link href="/staff-augmentation"><a>{lang === Lang.ES ? 'Tercerización de talento TI' : 'Staff augmentation'}</a></Link>
+                <Link href="/custom-software"><a>{lang === Lang.ES ? 'Desarrollo a la medida' : 'Custom software development'}</a></Link>
+                <Link href="/cyber-security"><a>{lang === Lang.ES ? 'Ciberseguridad' : 'Cybersecurity'}</a></Link>
               </div>
             </div>
-          </div>
+            <Link href="/about-us"><a>{lang === Lang.ES ? 'Nosotros' : 'About us'}</a></Link>
+            <button className={styles.language} onClick={setLang} aria-label={lang === Lang.ES ? 'Cambiar a inglés' : 'Switch to Spanish'}>⌁ {lang === Lang.ES ? 'EN' : 'ES'}</button>
+          </nav>
         </div>
-        {children}
-        <Footer footer={menuFooter} />
-      </div>
-      <div className="drawer-side">
-        <label htmlFor="my-drawer" className="drawer-overlay" />
-        {/* <!-- Sidebar content here --> */}
-        <div className='menu w-3/4 bg-white relative text-black '>
-          <div className='w-full h-16 flex py-2 justify-center items-center relative bg-gradient-to-tr from-secondary to-primary shadow-lg shadow-secondary/40'>
-            <div className='relative w-[120px] h-[38px]'>
-              <Image src={'/img/brand/kadree_tech_white.png'} alt={'Kadree Tech Logo'} priority layout='fill' objectFit='cover' />
-            </div>
-          </div>
-          <ul className="flex flex-col justify-start h-fit mr-2 px-4 pt-8">
-            {menuOptions && (menuOptions as any[]).map((x: any, k: number) => {
-              if (k === 0) {
-                return (
-                  <li key={`menu-item-${x.link_link}`} className='mb-6'>
-                    <div className='text-black font-bold'>{x.link_label}</div>
-                    <ul tabIndex={0} className="w-full pl-4 font-light">
-                      <li><Link href={'staff-augmentation'} className='cursor-pointer'>{lang == Lang.EN ? 'Staff Augmentation' : 'Tercerización'}</Link></li>
-                      <li><Link href={'custom-software'} className='cursor-pointer'>{lang == Lang.EN ? 'Custom Software Development' : 'Desarrollo a la Medida'}</Link></li>
-                      <li><Link href={'cyber-security'} className='cursor-pointer'>{lang == Lang.EN ? 'Cyber Security' : 'Seguridad Cibernética'}</Link></li>
-                      <li><Link href={'it-consultancy-and-training'} className='cursor-pointer'>{lang == Lang.EN ? 'IT Consultancy and Training' : 'Consultoría y Entrenamiento'}</Link></li>
-                    </ul>
-                  </li>)
-              } else {
-                return (
-                  <li key={`menu-item-${x.link_link}`}
-                    className={`active:bg-primary transition-all ease-in-out cursor-pointer active:text-white hover:text-white md:hover:bg-accent rounded-md
-                      ${k >= (menuOptions.length - 1) ? 'bg-primary text-white shadow-lg shadow-primary/50 mt-8' : 'text-black'}`
-                    }>
-                    <Link href={x.link_link.includes('#') ? x.link_link : `/${x.link_link}`} className={`flex flex-col justify-start  ${k === menuOptions.length - 1 ? 'text-white font-light text-center items-center' : 'text-black items-start'}  font-bold cursor-pointer`}>{x.link_label}</Link>
-                  </li>)
-              }
-            })}
-            {/* MOBILE LANGUAGE TOGGLE */}
-           <div className='mt-8 w-full flex flex-row justify-center items-center text-sm'>
-              {lang === Lang.EN ?
-                <button onClick={setLang}>ESPAÑOL</button>
-                :
-                <button onClick={setLang}>ENGLISH</button>
-              }
-            </div> 
-          </ul>
-        </div>
-      </div>
+      </header>
+      <div className={styles.content}>{children}</div>
+      {footer && <Footer footer={footer} />}
     </div>
   )
 }

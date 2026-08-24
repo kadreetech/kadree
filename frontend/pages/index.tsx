@@ -11,7 +11,7 @@ import { HomeLayout, IMainLayout, } from '../components/layout/HomeLayout';
 const Home: NextPage<any, any> = ({ menu, page, stepGraphics, ctas, forms }: IMainLayout) => {
 
   return (
-    <div className={'w-screen'}>
+    <div className={'w-full overflow-x-hidden'}>
       <HtmlHead />
       <HomeLayout headline={'Here'} menu={menu} page={page} stepGraphics={stepGraphics} ctas={ctas} forms={forms} />
     </div>
