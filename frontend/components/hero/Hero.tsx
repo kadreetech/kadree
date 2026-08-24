@@ -71,7 +71,7 @@ export const HeroBody = {
 }
 
 
-const ParticlesHome = () => {
+export const ParticlesHome = () => {
   // const options: IOptions = {
   const options: any = {
     responsive: [{

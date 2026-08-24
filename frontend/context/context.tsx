@@ -16,7 +16,7 @@ const MainContext = createContext<IMainContext>({
 });
 
 export const MainContextWrapper = ({ children }: { children: ReactNode }): ReactElement => {
-  const [lang, setLang] = useState<Lang>(Lang.EN);
+  const [lang, setLang] = useState<Lang>(Lang.ES);
 
   const handleLanguage = () => {
     switch (lang) {

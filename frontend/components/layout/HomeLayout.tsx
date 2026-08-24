@@ -1,23 +1,12 @@
 import Image from 'next/image'
-import { useState, useCallback, useEffect } from 'react'
-import Marquee from "react-fast-marquee"
-import "yup-phone"
+import { useNextSanityImage } from 'next-sanity-image'
 import { Lang, useMainContext } from '../../context/context'
-import { useMediaQueries } from '../../hooks'
 import Map2XL from '../../images/world_2xl.png'
-import MapXL from '../../images/world_xl.png'
-import MapLG from '../../images/world_lg.png'
-import MapSM from '../../images/world_sm.png'
 import MapXS from '../../images/world_xs.png'
-import { IconCard, IconGlassCard } from '../cards/IconCards'
-import { CtaWhite } from '../cta/CTA'
-import { Hero, IHero } from '../hero/Hero'
-import { Navigation } from '../navigation/Navigation'
-import { Step } from '../steps/Step'
-import { SectionBlur } from './sections/SectionBlur'
-import { SectionColor } from './sections/SectionColor'
-import { SectionForm } from './sections/SectionForm'
-import { SectionHeadline } from './sections/SectionHeadline'
+import { client } from '../../pages'
+import { ParticlesHome } from '../hero/Hero'
+import { HomeNavigation } from '../navigation/HomeNavigation'
+import styles from '../../styles/HomeRedesign.module.css'
 
 export interface IMainLayout {
   headline?: string
@@ -32,178 +21,138 @@ export interface IMainLayout {
   cardType?: 'lego' | 'straigh' | 'around'
 }
 
-export const HomeLayout = ({ menu, page, stepGraphics, ctas, forms }: IMainLayout) => {
-  const { lang } = useMainContext()
+const translations = {
+  es_ES: {
+    heroTitle: 'Construyamos juntos el futuro digital de tu negocio',
+    heroBody: 'Te acompañamos con desarrollo de software, talento TI y consultoría especializada, para que te enfoques en lo que mejor sabes hacer: tu negocio.',
+    contact: 'Contáctanos',
+    services: [
+      { icon: '/img/redesign/staff.svg', title: ['Tercerización de talento', 'TI'], body: 'Ingenieros calificados, integrados a tu equipo sin fricción.' },
+      { icon: '/img/redesign/software.svg', title: ['Desarrollo de software a', 'la medida'], body: 'Soluciones digitales diseñadas para tu negocio.' },
+      { icon: '/img/redesign/consulting.svg', title: ['Consultoría y', 'capacitación en TI'], body: 'Acompañamiento experto para decisiones tecnológicas más acertadas.' },
+    ],
+    processTitle: 'Amplía tu equipo de desarrollo',
+    processTime: '10 días, de la solicitud a la terna',
+    steps: [
+      { title: 'Briefing', body: 'Entendemos tu necesidad: presupuesto, cultura corporativa, pila tecnológica y el perfil exacto que buscas. Con esta información, definimos juntos el candidato ideal para tu equipo.' },
+      { title: 'Selección de candidatos', body: 'Te presentamos una terna de candidatos que ya superaron nuestro proceso de entrevistas y se ajustan al perfil solicitado. Tú eliges quién se une a tu equipo.' },
+      { title: 'Concéntrate en tu proceso de digitalización', body: 'Empieza a trabajar con tu nuevo compañero de equipo mientras nosotros gestionamos contratos, pagos y beneficios. Tú te enfocas en tu negocio; nosotros en lo operativo.' },
+    ],
+    difference: '¿Qué nos diferencia de otras empresas?',
+    benefits: ['Honorarios', 'Selección de perfiles', 'Bajo riesgo operativo'],
+    geography: 'Trabajamos en tu zona horaria',
+    closing: 'Potencia la capacidad digital de tu negocio.',
+  },
+  en_EN: {
+    heroTitle: 'Let’s build the digital future of your business together',
+    heroBody: 'We support you with software development, IT talent and specialized consultancy, so you can focus on what you do best: your business.',
+    contact: 'Contact us',
+    services: [
+      { icon: '/img/redesign/staff.svg', title: ['IT staff', 'augmentation'], body: 'Qualified engineers, integrated into your team without friction.' },
+      { icon: '/img/redesign/software.svg', title: ['Custom software', 'development'], body: 'Digital solutions designed for your business.' },
+      { icon: '/img/redesign/consulting.svg', title: ['IT consulting', 'and training'], body: 'Expert guidance for more informed technology decisions.' },
+    ],
+    processTitle: 'Expand your development team',
+    processTime: '10 days, from request to shortlist',
+    steps: [
+      { title: 'Briefing', body: 'We understand your budget, culture, technology stack and the exact profile you need. Together, we define the ideal candidate for your team.' },
+      { title: 'Candidate selection', body: 'We present a shortlist of candidates who passed our interview process and match the required profile. You choose who joins your team.' },
+      { title: 'Focus on your digitalization process', body: 'Start working with your new teammate while we manage contracts, payments and benefits. You focus on your business; we handle operations.' },
+    ],
+    difference: 'What makes us different from other companies?',
+    benefits: ['Fees', 'Profile selection', 'Low operational risk'],
+    geography: 'We work in your time zone',
+    closing: 'Boost the digital capacity of your business.',
+  },
+}
 
-  const homePage = page.find(x => x['__i18n_lang'] === lang)
-  const heroMain = homePage?.home_hero
-
-  const hero: IHero = {
-    img: heroMain?.hero_image,
-    title: heroMain?.hero_title,
-    body: heroMain?.hero_body,
-    button: {
-      color: 'purple',
-      isInternal: !heroMain?.hero_button.button_redirect,
-      label: heroMain?.hero_button.button_label,
-      link: heroMain?.hero_button.button_link
-    }
-  }
-
-  const graphicSection = homePage?.home_sections[0]
-
-  const stepsSection = homePage?.home_sections[1]
-  const stepsGraphic = stepGraphics?.find(x => x._id === stepsSection?.section_steps_graphic._ref) //stepsgraphics_collection_name /stepsgraphics_collection
-
-  const whiteCards = homePage?.home_sections[2]
-  const mapCta = ctas?.find(x => x._id === homePage?.home_sections[3].section_cta._ref)
+export const HomeLayout = ({ menu, page, stepGraphics }: IMainLayout) => {
+  const { lang = Lang.ES } = useMainContext()
+  const text = translations[lang]
+  const homePage = page.find((item) => item['__i18n_lang'] === lang) || page[0]
+  const stepsReference = homePage?.home_sections?.find((section: any) => section.section_content === 'steps_graphic')?.section_steps_graphic?._ref
+  const sanitySteps = stepGraphics?.find((item) => item._id === stepsReference)?.stepsgraphics_collection || []
 
   return (
-
-    <Navigation menu={menu} >
-      {hero &&
-        <Hero {...hero} isHome />
-      }
-      {graphicSection &&
-        <div className="mx-auto max-w-[1280px] -top-24 -mb-24 md:-top-32 md:-mb-32 relative ">
-          <div className='w-full flex flex-col sm:flex-row px-4 justify-start sm:justify-between lg:w-10/12 mx-auto gap-4'>
-            {graphicSection.section_iconcards?.map((x: any, k: any) => {
-              return (
-                <IconCard card={x} key={`service-icon-cards-${k}`} isLink />
-              )
-            })}
+    <HomeNavigation menu={menu}>
+      <main className={styles.page}>
+        <section className={styles.hero}>
+          <div className={styles.particles}><ParticlesHome /></div>
+          <div className={styles.heroContent}>
+            <h1>{text.heroTitle}</h1>
+            <p>{text.heroBody}</p>
+            <a className={styles.primaryButton} href="mailto:info@kadreetech.com">{text.contact}</a>
           </div>
-        </div>}
+        </section>
 
-      {stepsGraphic &&
-        <SectionColor>
-          <SectionHeadline
-            header={stepsGraphic.stepsgraphics_collection_name}
-            body={stepsGraphic.stepsgraphics_collection_body}
-          />
-          <div className='flex flex-col justify-center'>
-            {stepsGraphic.stepsgraphics_collection.map((x: any, k: number) => {
-              return (
-                <Step key={`graphic-step-${k}`} index={k} image={x.step_image} title={x.steps_graphic_title} body={x.steps_graphic_desc} />
-              )
-            })}
+        <section className={styles.services} aria-label={lang === Lang.ES ? 'Servicios' : 'Services'}>
+          {text.services.map((service) => (
+            <article className={styles.serviceCard} key={service.title.join('-')}>
+              <Image src={service.icon} alt="" width={72} height={72} />
+              <h2>{service.title[0]}<br />{service.title[1]}</h2>
+              <p>{service.body}</p>
+            </article>
+          ))}
+        </section>
+
+        <section className={styles.process}>
+          <header className={styles.processHeading}>
+            <h2>{text.processTitle}</h2>
+            <span>{text.processTime}</span>
+          </header>
+          <div className={styles.processGrid}>
+            {text.steps.map((step, index) => (
+              <ProcessStep key={step.title} index={index} title={step.title} body={step.body} image={sanitySteps[index]?.step_image} />
+            ))}
           </div>
-        </SectionColor>
-      }
+        </section>
 
-      {whiteCards &&
-        <SectionBlur topWave fullWidth botWave>
-          <SectionHeadline
-            header={whiteCards.section_title}
-            color={'white'}
-          />
-          <div className='max-w-[1280px] flex flex-col sm:flex-row px-4 justify-start sm:justify-between lg:w-10/12 mx-auto'>
-            {whiteCards.section_iconcards.map((x: any, k: number) => {
-              return (
-                <IconGlassCard key={`differentiate-cards-${k}`} card={x} />
-              )
-            })}
+        <section className={styles.blueSection}>
+          <div className={styles.difference}>
+            <h2>{text.difference}</h2>
+            <div className={styles.benefitGrid}>
+              {['/img/redesign/fee.svg', '/img/redesign/profile.svg', '/img/redesign/operation.svg'].map((icon, index) => (
+                <article className={styles.benefitCard} key={text.benefits[index]}>
+                  <Image src={icon} alt="" width={48} height={48} />
+                  <h3>{text.benefits[index]}</h3>
+                </article>
+              ))}
+            </div>
           </div>
-          {mapCta && <CtaWhite title={mapCta.cta_title} link={mapCta.cta_button.button_link} label={mapCta.cta_button.button_label} />}
 
-          <div className='w-full min-h-[550px] 600:min-h-[690px] 700:min-h-[360px] 800:min-h-[720px] 900:min-h-[860px] 1000:min-h-[920px] 1100:min-h-[990px] 1200:min-h-[1000px] 1250:min-h-[1200px]
-          1300:min-h-[640px] 1400:min-h-[700px] 1520:min-h-[780px] 1600:min-h-[840px] 1700:min-h-[940px] 1800:min-h-[940px] 1850:min-h-[1040px] 1900:min-h-[1100px] 2000:min-h-[1200px] 2100:min-h-[1300px] 2200:min-h-[1400px] 2300:min-h-[1450px] 2400:min-h-[1500px] 2500:min-h-[1550px] 2600:min-h-[1600px]
-           sm:min-h-[450px] md:min-h-[650px] lg:min-h-[820px] xl:min-h-[560px]  z-10 mb-24 500:mb-72'>
-            <TextMarquee text={lang === Lang.EN ? 'our geography' : 'nuestra ubicación'} times={5} />
-            <Map />
+          <div className={styles.mapBlock}>
+            <h2>{text.geography}</h2>
+            <div className={`${styles.mapImage} ${styles.mapDesktop}`}><Image src={Map2XL} alt={lang === Lang.ES ? 'Zonas horarias donde trabaja Kadree Tech' : 'Time zones where Kadree Tech works'} /></div>
+            <div className={`${styles.mapImage} ${styles.mapMobile}`}><Image src={MapXS} alt={lang === Lang.ES ? 'Zonas horarias donde trabaja Kadree Tech' : 'Time zones where Kadree Tech works'} /></div>
+            <p>{text.closing}</p>
+            <a className={styles.secondaryButton} href="mailto:info@kadreetech.com">{text.contact}</a>
           </div>
-        </SectionBlur>
-      }
-
-
-      {homePage?.home_sections[4] &&
-        <SectionForm section={homePage?.home_sections[4]} formsCollection={forms || []} key={`section-form-home`} />
-      }
-
-    </Navigation >
+        </section>
+      </main>
+    </HomeNavigation>
   )
 }
 
+const ProcessStep = ({ index, title, body, image }: { index: number; title: string; body: string; image: any }) => {
+  const imageProps: any = useNextSanityImage(client, image)
+  return (
+    <article className={`${styles.processStep} ${styles[`step${index + 1}`]}`}>
+      <div className={styles.stepText}>
+        <div className={styles.stepTitle}>
+          <span>{index + 1}</span>
+          <h3>{title}</h3>
+        </div>
+        <p>{body}</p>
+      </div>
+      {imageProps?.src && <div className={styles.stepImage}><Image {...imageProps} alt="" layout="responsive" /></div>}
+    </article>
+  )
+}
 
 export function getLinkToPage(card: string) {
-  let link = '/';
-  if (card.toLowerCase().includes('staff') || card.toLowerCase().includes('staff')) link = '/staff-augmentation'
-  if (card.toLowerCase().includes('software') || card.toLowerCase().includes('software')) link = '/custom-software'
-  if (card.toLowerCase().includes('training') || card.toLowerCase().includes('training')) link = '/it-consultancy-and-training'
-  if (card.toLowerCase().includes('cyber') || card.toLowerCase().includes('cyber')) link = '/cyber-security'
-  return link
-}
-
-
-const TextMarquee = ({ text, times }: { text: string, times: number }) => {
-  const textCollection: string[] = new Array(times).map(x => x = text)
-  for (let index = 0; index < times; index++) {
-    textCollection.push(text);
-  }
-  return (
-    <Marquee gradient={false} className='overflow-hidden'>
-      {textCollection.map((x: string, k: number) => {
-        return (
-          <div key={`marquee-${k}`} className='text-white text-3xl sm:text-4xl lg:text-6xl flex flex-row justify-start items-center z-40 relative min-h-[30px] sm:min-h-[50px] lg:min-h-[80px]'>
-            <div>
-              {x}
-            </div>
-            <div className='rounded-full h-[6px] w-[6px] lg:h-[10px] lg:w-[10px] bg-white mx-2 relative top-1' />
-          </div>
-        )
-      })}
-    </Marquee>
-  )
-}
-
-
-const Map = () => {
-  const { isTablet, isLaptop, isDesktop, isExtraLarge } = useMediaQueries()
-
-  if (isExtraLarge) {
-    return (
-      <div className='relative w-full'>
-        <div className='absolute -top-12 w-full flex flex-row justify-center'>
-          <Image src={Map2XL} alt='Location of Kadree Tech employees and contractors' className='w-full h-auto' />
-        </div>
-      </div>
-    )
-  }
-  if (isDesktop) {
-    return (
-      <div className='relative w-full'>
-        <div className='absolute -top-12 w-full flex flex-row justify-center'>
-          <Image src={MapXL} alt='Location of Kadree Tech employees and contractors' className='w-full h-auto' />
-        </div>
-      </div>
-    )
-  }
-  if (isLaptop) {
-    return (
-      <div className='relative w-full'>
-        <div className='absolute -top-12 w-full'>
-          <Image src={MapLG} alt='Location of Kadree Tech employees and contractors' className='w-full h-auto' />
-        </div>
-      </div>
-    )
-  }
-
-  if (isTablet) {
-    return (
-      <div className='relative w-full'>
-        <div className='absolute -top-12 w-full'>
-          <Image src={MapSM} alt='Location of Kadree Tech employees and contractors' className='w-full h-auto' />
-        </div>
-      </div>
-    )
-  }
-  return (
-    <div className='relative w-full'>
-      <div className='absolute -top-24 w-full 500:-top-32'>
-        <div className='w-full relative min-h-[770px] 500:min-h-[1010px] 600:min-h-[1170px]'>
-          <Image src={MapXS} alt='Location of Kadree Tech employees and contractors' layout='fill' objectFit='cover' className='w-full mx-auto ' />
-        </div>
-      </div>
-    </div>
-  )
+  const normalized = card?.toLowerCase() || ''
+  if (normalized.includes('staff') || normalized.includes('tercer')) return '/staff-augmentation'
+  if (normalized.includes('software')) return '/custom-software'
+  if (normalized.includes('cyber') || normalized.includes('ciber')) return '/cyber-security'
+  return '/'
 }
