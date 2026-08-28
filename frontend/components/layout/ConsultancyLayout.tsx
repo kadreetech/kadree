@@ -60,6 +60,7 @@ const translations = {
       body: 'No todas las empresas necesitan un gerente de proyectos de tiempo completo. Pero algunos proyectos sí necesitan dirección, experiencia y seguimiento profesional. Kadree pone a tu disposición un gerente de proyectos con la dedicación que realmente necesitas, ajustada al alcance y etapa de tu proyecto.',
       ideal: 'Ideal para empresas que...',
       bullets: ['Necesitan dirección para un proyecto puntual.', 'No tienen suficiente volumen para justificar un gerente de tiempo completo.', 'Necesitan experiencia senior sin incorporar una posición permanente.', 'Quieren mantener el control del proyecto sin desviar a miembros clave de su equipo.'],
+      directionCaption: 'Dirección experta, dimensionada al proyecto — no a la estructura.',
       caption: 'La experiencia que necesitas, sin una estructura permanente.', traditional: 'GERENTE DE TIEMPO COMPLETO', kadree: 'GERENCIA KADREE',
       traditionalItems: ['Costo fijo', 'Dedicación permanente', 'Estructura adicional', 'Menor flexibilidad'],
       kadreeItems: ['Dedicación según necesidad', 'Experiencia especializada', 'Mayor flexibilidad', 'Sin ampliar permanentemente tu estructura'],
@@ -97,7 +98,7 @@ const translations = {
     },
     management: {
       title: 'On-demand project management', subtitle: 'The experience of a project manager without permanent overhead.', body: 'Not every company needs a full-time project manager, but critical projects still need direction, experience and professional follow-up. Kadree provides the dedication your project actually needs, adjusted to its scope and stage.', ideal: 'Ideal for companies that...',
-      bullets: ['Need direction for a specific project.', 'Do not have enough volume to justify a full-time manager.', 'Need senior expertise without adding a permanent position.', 'Want to retain project control without diverting key team members.'], caption: 'The experience you need, without permanent overhead.', traditional: 'FULL-TIME MANAGER', kadree: 'KADREE MANAGEMENT',
+      bullets: ['Need direction for a specific project.', 'Do not have enough volume to justify a full-time manager.', 'Need senior expertise without adding a permanent position.', 'Want to retain project control without diverting key team members.'], directionCaption: 'Expert direction, sized to the project — not the structure.', caption: 'The experience you need, without permanent overhead.', traditional: 'FULL-TIME MANAGER', kadree: 'KADREE MANAGEMENT',
       traditionalItems: ['Fixed cost', 'Permanent dedication', 'Additional structure', 'Less flexibility'], kadreeItems: ['Dedication as needed', 'Specialized expertise', 'Greater flexibility', 'No permanent expansion of your structure'], quote: '“More experience for your project. Less structure for your company.”', ctaButton: 'Tell us about your project →',
     },
     whyTitle: 'Why Kadree?', why: [['/img/consultancy/experience.svg', 'Experience', 'Specialized judgment for better decisions.'], ['/img/consultancy/flexibility.svg', 'Flexibility', 'Services adapted to your company’s size and timing.'], ['/img/consultancy/business-vision.svg', 'Business vision', 'Technology focused on results, not technology for its own sake.']],
@@ -195,8 +196,8 @@ const Management = ({ content }: { content: any }) => (
   <div className={styles.panelInner}>
     <h2>{content.title}</h2><h3 className={styles.subtitle}>{content.subtitle}</h3><p className={styles.panelLead}>{content.body}</p>
     <div className={styles.managementIntro}>
-      <div><h3>{content.ideal}</h3><ul>{content.bullets.map((item: string) => <li key={item}><Image src="/img/consultancy/check-purple.svg" alt="" width={24} height={24} /><span>{item}</span></li>)}</ul></div>
-      <div className={styles.directionGraphic}><Image src="/img/consultancy/direction-expert.svg" alt="Dirección experta dimensionada al proyecto" width={399} height={318} /></div>
+      <div><h3>{content.ideal}</h3><ul>{content.bullets.map((item: string) => <li key={item}><span className={styles.managementCheck}><Image src="/img/consultancy/check-purple.svg" alt="" width={24} height={24} /></span><span>{item}</span></li>)}</ul></div>
+      <div className={styles.directionGraphic}><Image src="/img/consultancy/direction-expert.svg" alt="Dirección experta dimensionada al proyecto" width={399} height={318} /><p>{content.directionCaption}</p></div>
     </div>
     <p className={styles.managementCaption}>{content.caption}</p>
     <div className={styles.comparison}>
