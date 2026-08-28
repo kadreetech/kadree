@@ -4,7 +4,6 @@ import whiteLogo from './kadree-tech-white.svg'
 import marcaCo from './marca_co.png'
 import Image from 'next/image'
 import { Lang, useMainContext } from '../../context/context'
-import { RiLinkedinBoxFill, RiWhatsappFill } from 'react-icons/ri'
 import { useMediaQueries } from '../../hooks'
 import { PortableText } from '@portabletext/react'
 
@@ -169,8 +168,8 @@ const FooterInfo = ({ label, children }: { label: string, children: ReactNode })
   )
 }
 
-const Linkeding = () => <FooterIcons name='LinkedIn' link='https://www.linkedin.com/company/kadreetech/'><RiLinkedinBoxFill className='w-8 h-8' /></FooterIcons>
-const Whatasapp = () => <FooterIcons name='Whatsapp' link='https://api.whatsapp.com/send?phone=573008013539'><RiWhatsappFill className='w-8 h-8' /></FooterIcons>
+const Linkeding = () => <FooterIcons name='LinkedIn' link='https://www.linkedin.com/company/kadreetech/'><Image src="/img/consultancy/linkedin.svg" alt="LinkedIn" width={32} height={32} /></FooterIcons>
+const Whatasapp = () => <FooterIcons name='Whatsapp' link='https://api.whatsapp.com/send?phone=573008013539'><Image src="/img/consultancy/whatsapp.svg" alt="WhatsApp" width={32} height={32} /></FooterIcons>
 
 
 const FooterIcons = ({ link, name, children }: { link: string, name: string, children: ReactNode }) => {
