@@ -1,50 +1,52 @@
-.page { width: 100%; overflow-x: hidden; background: #080b16; color: #fff; }
+.page { width: 100%; overflow-x: hidden; background: #080b16; color: #fff; font-family: 'Lexend Deca', sans-serif; }
+.page p { font-family: 'Inter', sans-serif; font-weight: 400; }
+.page button, .page a { font-family: 'Lexend Deca', sans-serif; }
 .hero { position: relative; min-height: 655px; padding: 156px 24px 70px; overflow: hidden; background: #080b16; }
 .heroGlow { position: absolute; inset: 0; background: radial-gradient(circle at 85% 0%, rgba(81,73,171,.38), transparent 32%), radial-gradient(circle at 48% 15%, rgba(12,197,197,.08), transparent 28%); }
 .heroContent { position: relative; z-index: 1; width: min(1180px, 100%); margin: 0 auto; text-align: center; }
-.eyebrow { margin: 0 0 20px; color: #a59cff; font-size: 13px; font-weight: 700; letter-spacing: .22em; }
-.hero h1 { max-width: 1120px; margin: 0 auto; font-size: clamp(44px, 4.6vw, 64px); line-height: 1.16; font-weight: 500; letter-spacing: -.025em; }
+.eyebrow { margin: 0 0 20px; color: #a59cff; font-family: 'Lexend Deca', sans-serif !important; font-size: 14px; font-weight: 700 !important; letter-spacing: 1.82px; }
+.hero h1 { max-width: 1216px; margin: 0 auto; font-size: clamp(44px, 4.42vw, 60px); line-height: 1; font-weight: 500; letter-spacing: 0; }
 .hero h1 span { color: #52d7d5; }
-.heroBody { max-width: 1110px; margin: 28px auto 0; color: #e4e3e9; font-size: 17px; line-height: 1.45; }
-.primaryButton { display: inline-flex; min-height: 52px; margin-top: 38px; padding: 0 22px; align-items: center; justify-content: center; border-radius: 7px; background: #5149ab; color: #fff; font-size: 14px; font-weight: 600; box-shadow: 0 12px 28px rgba(81,73,171,.24); transition: transform .2s ease, background-color .2s ease; }
+.heroBody { max-width: 1216px; margin: 28px auto 0; color: #fff; font-size: 20px; line-height: 1.2; }
+.primaryButton { display: inline-flex; min-height: 52px; margin-top: 38px; padding: 0 22px; align-items: center; justify-content: center; border-radius: 7px; background: #5149ab; color: #fff; font-size: 16px; font-weight: 500; box-shadow: 0 12px 28px rgba(81,73,171,.24); transition: transform .2s ease, background-color .2s ease; }
 .primaryButton:hover { background: #6259c9; transform: translateY(-2px); }
 .chips { margin-top: 56px; display: flex; justify-content: center; gap: 24px; }
-.chips span { position: relative; padding: 9px 18px; border: 1px solid rgba(255,255,255,.16); border-radius: 999px; background: rgba(255,255,255,.025); color: #dfdee8; font-size: 13px; font-weight: 600; }
+.chips span { position: relative; padding: 9px 18px; border: 1px solid rgba(255,255,255,.16); border-radius: 999px; background: rgba(255,255,255,.025); color: #dfdee8; font-size: 16px; font-weight: 500; }
 .chips span:not(:last-child)::after { content: '•'; position: absolute; right: -16px; color: rgba(255,255,255,.35); }
 .servicesSection { padding: 70px 24px 86px; background: #fff; color: #24222a; }
 .sectionIntro { max-width: 800px; margin: 0 auto 34px; text-align: center; }
 .sectionIntro .eyebrow { margin-bottom: 12px; }
-.sectionIntro h2 { font-size: 34px; line-height: 1.18; font-weight: 600; }
-.sectionIntro > p:last-child { max-width: 650px; margin: 10px auto 0; color: #66636d; font-size: 14px; line-height: 1.45; }
+.sectionIntro h2 { font-size: 32px; line-height: 1.2; font-weight: 500; }
+.sectionIntro > p:last-child { max-width: 720px; margin: 10px auto 0; color: #686868; font-size: 16px; line-height: 1.4; }
 .servicesLayout { width: min(1280px, 100%); margin: 0 auto; display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 24px; align-items: start; }
 .tabs { position: sticky; top: 108px; border: 1px solid #dedde7; background: #fff; }
-.tabs button { width: 100%; min-height: 74px; padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid #dedde7; color: #27252d; text-align: left; font-size: 15px; font-weight: 600; }
+.tabs button { width: 100%; min-height: 74px; padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid #dedde7; color: #1e1e1e; text-align: left; font-size: 18px; font-weight: 500; line-height: 1.2; }
 .tabs button:last-child { border-bottom: 0; }
 .tabs .activeTab { background: #eeedf7; }
 .panel { min-width: 0; border-radius: 18px; background: #eeedf7; }
 .panelInner { padding: 42px 34px; text-align: center; }
-.panelInner > h2 { margin: 12px 0 0; font-size: 34px; line-height: 1.15; font-weight: 600; }
-.badge { display: inline-flex; padding: 7px 15px; border-radius: 999px; background: #c7f4f0; color: #087c78; font-size: 12px; font-weight: 700; }
-.subtitle { margin-top: 16px; color: #6c5dd3; font-size: 17px; font-weight: 600; }
-.panelLead { max-width: 830px; margin: 24px auto 0; color: #5d596b; font-size: 14px; line-height: 1.55; }
+.panelInner > h2 { margin: 12px 0 0; font-size: 32px; line-height: 1.2; font-weight: 500; }
+.badge { display: inline-flex; padding: 7px 15px; border-radius: 999px; background: #c7f4f0; color: #087c78; font-size: 14px; font-weight: 700; }
+.subtitle { margin-top: 16px; color: #6c5dd3; font-size: 18px; font-weight: 500; }
+.panelLead { max-width: 830px; margin: 24px auto 0; color: #5d637c; font-size: 16px; line-height: 1.55; }
 .panelSectionTitle, .processTitle { margin: 56px 0 30px; font-size: 20px; font-weight: 600; }
 .governanceCards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; text-align: left; }
 .governanceCards article, .trainingGrid article { padding: 30px; border-radius: 14px; background: #fff; box-shadow: 0 12px 24px rgba(17,20,40,.07); }
 .governanceCards article > span { width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; background: #6c5dd3; color: #fff; font-size: 12px; font-weight: 700; }
 .governanceCards h4, .trainingGrid h4 { margin-top: 20px; font-size: 16px; font-weight: 600; }
-.governanceCards p, .trainingGrid p { margin-top: 10px; color: #66636d; font-size: 13px; line-height: 1.45; }
+.governanceCards p, .trainingGrid p { margin-top: 10px; color: #686868; font-size: 16px; line-height: 1.35; }
 .quote { max-width: 760px; margin: 64px auto 0; text-align: center; }
 .quote img { opacity: .8; }
-.quote p { margin-top: 24px; font-size: 21px; line-height: 1.35; font-weight: 600; }
+.quote p { margin-top: 24px; color: #15182c; font-family: 'Lexend Deca', sans-serif; font-size: 22px; line-height: 1.5; font-weight: 600; }
 .processGrid { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: left; }
 .processGrid::before { content: ''; position: absolute; top: 17px; left: 5%; right: 5%; border-top: 2px dashed #c9c5db; }
 .processGrid article { position: relative; z-index: 1; }
 .processGrid article > span { width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center; border: 2px solid #6c5dd3; border-radius: 50%; background: #eeedf7; color: #6c5dd3; font-size: 11px; font-weight: 700; }
-.processGrid h4 { margin-top: 16px; font-size: 15px; font-weight: 600; }
-.processGrid p { margin-top: 8px; color: #66636d; font-size: 12px; line-height: 1.45; }
+.processGrid h4 { margin-top: 16px; font-size: 18px; font-weight: 600; }
+.processGrid p { margin-top: 8px; color: #686868; font-size: 16px; line-height: 1.35; }
 .inPanelCta { margin-top: 46px; padding: 30px 20px; border-radius: 22px; background: radial-gradient(circle at 90% 0%, #242451 0%, #0b0e1e 45%, #080b16 100%); color: #fff; }
 .inPanelCta h3 { font-size: 22px; font-weight: 600; }
-.inPanelCta p { margin-top: 10px; color: #d0cfda; font-size: 13px; }
+.inPanelCta p { margin-top: 10px; color: #d0cfda; font-size: 16px; line-height: 1.45; }
 .inPanelCta strong { display: block; margin-top: 18px; color: #d8d6e4; font-size: 11px; letter-spacing: .08em; }
 .inPanelCta .primaryButton { margin-top: 25px; }
 .trainingGrid { margin-top: 4px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; text-align: left; }
@@ -52,35 +54,35 @@
 .trainingGrid h4 { margin-top: 14px; }
 .panelInner > .primaryButton { margin-top: 36px; }
 .managementIntro { margin-top: 42px; display: grid; grid-template-columns: 1fr 1.05fr; gap: 28px; align-items: stretch; text-align: left; }
-.managementIntro h3 { margin: 10px 0 24px; font-size: 17px; font-weight: 600; }
+.managementIntro h3 { margin: 10px 0 24px; font-size: 18px; font-weight: 600; }
 .managementIntro ul { display: flex; flex-direction: column; gap: 20px; }
-.managementIntro li { display: flex; align-items: flex-start; gap: 12px; color: #504d59; font-size: 13px; line-height: 1.4; }
+.managementIntro li { display: flex; align-items: flex-start; gap: 12px; color: #504d59; font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.4; }
 .managementIntro li img { flex: 0 0 24px; }
 .directionGraphic { min-height: 330px; padding: 8px; display: flex; align-items: center; justify-content: center; border-radius: 22px; overflow: hidden; background: #080b16; }
 .directionGraphic img { width: 100%; height: auto; }
-.managementCaption { margin-top: 38px; color: #777382; font-size: 14px; }
+.managementCaption { margin-top: 38px; color: #686868; font-size: 16px; }
 .comparison { margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px; text-align: left; }
 .comparison article { padding: 30px; border-radius: 16px; background: rgba(255,255,255,.58); }
-.comparison h3 { margin-bottom: 20px; color: #5c5967; font-size: 12px; font-weight: 700; letter-spacing: .12em; }
-.comparison p { padding: 12px 0; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid rgba(90,86,108,.1); color: #514e5b; font-size: 13px; }
+.comparison h3 { margin-bottom: 20px; color: #5c5967; font-size: 13px; font-weight: 700; letter-spacing: .12em; }
+.comparison p { padding: 12px 0; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid rgba(90,86,108,.1); color: #514e5b; font-size: 16px; }
 .comparison p:last-child { border-bottom: 0; }
 .comparison .kadreeCard { background: #211d4c; color: #fff; }
 .comparison .kadreeCard h3 { color: #a59cff; }
 .comparison .kadreeCard p { border-color: rgba(255,255,255,.08); color: #efedf8; }
 .whySection { padding: 96px 24px; background: #080b16; text-align: center; }
 .contentWidth { width: min(1150px, 100%); margin: 0 auto; }
-.whySection h2, .finalCta h2 { font-size: 34px; font-weight: 600; }
+.whySection h2, .finalCta h2 { font-size: 32px; line-height: 1.25; font-weight: 700; letter-spacing: -.34px; }
 .whyGrid { margin-top: 58px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .whyGrid article { min-height: 220px; padding: 30px 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,.08); border-radius: 20px; background: rgba(255,255,255,.035); }
-.whyGrid h3 { margin-top: 18px; font-size: 16px; font-weight: 600; }
-.whyGrid p { margin-top: 10px; color: #c9c7d3; font-size: 13px; line-height: 1.45; }
+.whyGrid h3 { margin-top: 18px; font-size: 18px; font-weight: 500; }
+.whyGrid p { margin-top: 10px; color: #c9c7d3; font-size: 16px; line-height: 1.45; }
 .multiline { white-space: pre-line; }
-.whySection > div > p { margin-top: 48px; color: #d0cfda; font-size: 13px; line-height: 1.6; }
+.whySection > div > p { margin-top: 48px; color: #d0cfda; font-size: 16px; line-height: 1.65; }
 .finalCta { padding: 100px 24px 88px; text-align: center; background: linear-gradient(180deg, #0b0f1e 0%, #142042 52%, #080b16 100%); }
-.finalCta > p { max-width: 660px; margin: 20px auto 0; color: #d2d1db; font-size: 14px; line-height: 1.55; }
-.finalCta > a { display: inline-flex; min-height: 52px; margin-top: 30px; padding: 0 24px; align-items: center; border-radius: 7px; background: #0cc5c5; color: #07222b; font-weight: 600; }
+.finalCta > p { max-width: 660px; margin: 20px auto 0; color: #d2d1db; font-size: 16px; line-height: 1.65; }
+.finalCta > a { display: inline-flex; min-height: 52px; margin-top: 30px; padding: 0 24px; align-items: center; border-radius: 7px; background: #0cc5c5; color: #07222b; font-size: 16px; font-weight: 500; }
 .finalCta > div { margin-top: 34px; display: flex; justify-content: center; gap: 26px; }
-.finalCta > div span { position: relative; color: #d2d1db; font-size: 12px; font-weight: 600; }
+.finalCta > div span { position: relative; color: #d2d1db; font-size: 14px; font-weight: 500; }
 .finalCta > div span:not(:last-child)::after { content: '•'; position: absolute; right: -16px; color: rgba(255,255,255,.35); }
 @media (max-width: 900px) {
   .hero { min-height: auto; padding-top: 132px; }
@@ -97,25 +99,26 @@
 @media (max-width: 620px) {
   .hero { padding: 118px 18px 54px; }
   .hero h1 { font-size: 38px; line-height: 1.12; }
-  .heroBody { margin-top: 22px; font-size: 14px; }
+  .heroBody { margin-top: 22px; font-size: 16px; line-height: 1.45; }
   .primaryButton { width: 100%; max-width: 330px; margin-top: 30px; }
   .chips { margin-top: 40px; flex-wrap: wrap; gap: 10px; }
-  .chips span { padding: 8px 12px; font-size: 11px; }
+  .chips span { padding: 8px 12px; font-size: 13px; }
   .chips span::after { display: none; }
   .servicesSection { padding: 56px 14px 64px; }
   .sectionIntro h2 { font-size: 28px; }
   .tabs { display: grid; grid-template-columns: 1fr; overflow: visible; }
-  .tabs button { min-width: 0; min-height: 58px; padding: 12px 16px; border-right: 0; border-bottom: 1px solid #dedde7; font-size: 12px; }
+  .tabs button { min-width: 0; min-height: 58px; padding: 12px 16px; border-right: 0; border-bottom: 1px solid #dedde7; font-size: 15px; }
   .tabs button:last-child { border-bottom: 0; }
   .tabs button img { display: block; }
   .panel { border-radius: 14px; }
   .panelInner { padding: 34px 16px; }
   .panelInner > h2 { font-size: 27px; }
   .subtitle { font-size: 15px; line-height: 1.35; }
-  .panelLead { font-size: 13px; }
+  .panelLead { font-size: 15px; }
   .panelSectionTitle, .processTitle { margin-top: 42px; font-size: 18px; }
   .governanceCards, .trainingGrid, .processGrid, .managementIntro, .comparison { grid-template-columns: 1fr; }
   .governanceCards article, .trainingGrid article { padding: 22px; }
+  .governanceCards p, .trainingGrid p, .processGrid p, .managementIntro li, .comparison p { font-size: 15px; }
   .quote { margin-top: 46px; }
   .quote p { font-size: 18px; }
   .processGrid { gap: 26px; }
