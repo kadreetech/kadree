@@ -4,7 +4,6 @@ import whiteLogo from './kadree-tech-white.svg'
 import marcaCo from './marca_co.png'
 import Image from 'next/image'
 import { Lang, useMainContext } from '../../context/context'
-import { RiLinkedinBoxFill, RiWhatsappFill } from 'react-icons/ri'
 import { useMediaQueries } from '../../hooks'
 import { PortableText } from '@portabletext/react'
 
@@ -45,7 +44,7 @@ export const Footer = ({ footer }: { footer: any }) => {
   )
 
   const CopyRights = () => (
-    <div className='w-full sm:w-fit flex flex-col justify-start items-start z-40 text-xs font-light text-white/80 sm:items-center md:items-start mx-auto lg:mx-8'>
+    <div className='w-full sm:w-fit flex flex-col justify-start items-start z-40 text-xs font-normal text-white/80 sm:items-center md:items-start mx-auto lg:mx-8'>
       <div className='mb-2'>
         {lang === Lang.EN ?
           `© Kadree Tech S.A.S. ${new Date().getFullYear()}. All Rights Reserved.`
@@ -59,7 +58,7 @@ export const Footer = ({ footer }: { footer: any }) => {
 
   const Location = () => {
     const AddressBody = {
-      block: ({ children }: any) => <p className="text-sm font-light break-normal w-full">{children}</p>,
+      block: ({ children }: any) => <p className="text-sm font-normal break-normal w-full">{children}</p>,
       marks: {
         strong: ({ children }: any) => <strong className='font-bolder'>{children}</strong>
       },
@@ -69,7 +68,7 @@ export const Footer = ({ footer }: { footer: any }) => {
         {footer.footer_address.map((x: any) => {
           return (
             <div className='w-100 mb-4' key={`offices-${x.address_header}`}>
-              <div className='text-sm font-light break-normal w-full text-primary'>{x.address_header}</div>
+              <div className='text-sm font-semibold break-normal w-full text-primary'>{x.address_header}</div>
               <PortableText value={x.address_body} components={AddressBody} />
             </div>
           )
@@ -163,14 +162,14 @@ export const Footer = ({ footer }: { footer: any }) => {
 const FooterInfo = ({ label, children }: { label: string, children: ReactNode }) => {
   return (
     <div className='flex flex-col justify-start items-start'>
-      <label className='text-sm text-primary w-100 block mb-1'>{label}</label>
+      <label className='text-sm font-semibold text-primary w-100 block mb-1'>{label}</label>
       {children}
     </div>
   )
 }
 
-const Linkeding = () => <FooterIcons name='LinkedIn' link='https://www.linkedin.com/company/kadreetech/'><RiLinkedinBoxFill className='w-8 h-8' /></FooterIcons>
-const Whatasapp = () => <FooterIcons name='Whatsapp' link='https://api.whatsapp.com/send?phone=573008013539'><RiWhatsappFill className='w-8 h-8' /></FooterIcons>
+const Linkeding = () => <FooterIcons name='LinkedIn' link='https://www.linkedin.com/company/kadreetech/'><Image src="/img/consultancy/linkedin.svg" alt="LinkedIn" width={32} height={32} /></FooterIcons>
+const Whatasapp = () => <FooterIcons name='Whatsapp' link='https://api.whatsapp.com/send?phone=573008013539'><Image src="/img/consultancy/whatsapp.svg" alt="WhatsApp" width={32} height={32} /></FooterIcons>
 
 
 const FooterIcons = ({ link, name, children }: { link: string, name: string, children: ReactNode }) => {
