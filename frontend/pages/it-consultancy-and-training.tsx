@@ -5,7 +5,7 @@ import { ConsultancyLayout } from '../components/layout/ConsultancyLayout';
 
 const Consultancy: NextPage<any, any> = ({ menu }) => {
   return (
-    <div className="w-full overflow-x-hidden">
+    <div className="w-full">
       <HtmlHead />
       <ConsultancyLayout menu={menu} />
     </div>

@@ -1,4 +1,4 @@
-.page { width: 100%; overflow-x: hidden; background: #080b16; color: #fff; font-family: 'Lexend Deca', sans-serif; }
+.page { width: 100%; overflow-x: clip; background: #080b16; color: #fff; font-family: 'Lexend Deca', sans-serif; }
 .page p { font-family: 'Inter', sans-serif; font-weight: 400; }
 .page button, .page a { font-family: 'Lexend Deca', sans-serif; }
 .hero { position: relative; min-height: 655px; padding: 156px 24px 70px; overflow: hidden; background: #080b16; }
@@ -19,7 +19,7 @@
 .sectionIntro h2 { font-size: 32px; line-height: 1.2; font-weight: 500; }
 .sectionIntro > p:last-child { max-width: 720px; margin: 10px auto 0; color: #686868; font-size: 16px; line-height: 1.4; }
 .servicesLayout { width: min(1280px, 100%); margin: 0 auto; display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 24px; align-items: start; }
-.tabs { position: sticky; top: 108px; border: 1px solid #dedde7; background: #fff; }
+.tabs { position: sticky; top: 108px; z-index: 2; border: 1px solid #dedde7; background: #fff; }
 .tabs button { width: 100%; min-height: 74px; padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid #dedde7; color: #1e1e1e; text-align: left; font-size: 18px; font-weight: 500; line-height: 1.2; }
 .tabs button:last-child { border-bottom: 0; }
 .tabs .activeTab { background: #eeedf7; }
