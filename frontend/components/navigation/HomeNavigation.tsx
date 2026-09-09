@@ -45,7 +45,6 @@ export const HomeNavigation = ({ menu, children }: IHomeNavigation): ReactElemen
               <div className={styles.dropdown}>
                 <Link href="/staff-augmentation"><a>{lang === Lang.ES ? 'Tercerización de talento TI' : 'Staff augmentation'}</a></Link>
                 <Link href="/custom-software"><a>{lang === Lang.ES ? 'Desarrollo a la medida' : 'Custom software development'}</a></Link>
-                <Link href="/cyber-security"><a>{lang === Lang.ES ? 'Ciberseguridad' : 'Cybersecurity'}</a></Link>
                 <Link href="/it-consultancy-and-training"><a>{lang === Lang.ES ? 'Consultoría' : 'Consulting'}</a></Link>
               </div>
             </div>
