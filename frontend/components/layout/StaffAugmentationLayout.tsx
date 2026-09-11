@@ -228,7 +228,7 @@ export const StaffAugmentationLayout = ({ menu }: StaffAugmentationLayoutProps):
               <tbody>
                 {text.comparisonRows.map(([icon, title, traditional, kadree]) => (
                   <tr key={title}>
-                    <th scope="row"><Image src={asset(icon)} alt="" width={32} height={32} /><span>{title}</span></th>
+                    <th scope="row"><div className={styles.tableRowLabel}><Image src={asset(icon)} alt="" width={32} height={32} /><span>{title}</span></div></th>
                     <td data-label={text.traditional}>{traditional}</td>
                     <td data-label={text.kadree}>{kadree}</td>
                   </tr>
