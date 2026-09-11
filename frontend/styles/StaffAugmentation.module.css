@@ -11,6 +11,9 @@
 .primaryButton { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; padding: 0 20px; border-radius: 8px; color: #fff; background: var(--purple); font-size: 15px; font-weight: 600; box-shadow: 0 12px 28px rgba(81,73,171,.25); transition: transform .2s ease, background-color .2s ease; }
 .primaryButton:hover { transform: translateY(-2px); background: #6259c7; }
 .heroImage { align-self: end; line-height: 0; }
+@media (min-width: 761px) {
+  .heroImage { transform: scale(1.13); transform-origin: center bottom; }
+}
 .heroImage img { width: 100%; max-width: 715px; height: auto; margin-left: auto; object-fit: contain; object-position: right bottom; }
 .heroFeatures { width: 100%; margin: 30px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px; }
 .heroFeatures article { display: grid; grid-template-columns: 38px 1fr; gap: 14px; align-items: start; }
@@ -29,9 +32,12 @@
 .tableWrap thead th:nth-child(2) { width: 37.5%; background: var(--purple); }
 .tableWrap thead th:nth-child(3) { width: 37.5%; background: var(--teal); }
 .tableWrap tbody tr:last-child th, .tableWrap tbody tr:last-child td { border-bottom: 0; }
-.tableWrap tbody th { display: flex; align-items: center; gap: 12px; font-size: 15px; line-height: 1.3; font-weight: 600; }
+.tableWrap tbody th { font-size: 15px; line-height: 1.3; font-weight: 600; }
+.tableRowLabel { display: flex; align-items: center; gap: 12px; }
+.tableRowLabel > span:first-child { flex-shrink: 0; }
 .tableWrap td { color: #62667a; font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.45; }
 .tableWrap td:last-child { background: rgba(11,179,179,.055); }
+.tableWrap tbody tr:nth-child(even) > :nth-child(-n+2) { background: #fbfaff; }
 .comparisonNote { width: fit-content; max-width: 700px; margin: 34px auto 0; padding: 12px 22px 12px 14px; display: flex; align-items: center; gap: 12px; border: 1px solid #ebe9f2; border-radius: 999px; background: #fff; color: #414458; font-family: 'Inter', sans-serif; font-size: 14px; box-shadow: 0 10px 24px rgba(33,28,70,.06); }
 .process { padding-top: 82px; padding-bottom: 70px; background: #fff; }
 .process .sectionHeading { margin-bottom: 64px; }
