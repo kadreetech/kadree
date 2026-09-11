@@ -151,7 +151,7 @@ const ProcessStep = ({ index, title, body, image }: { index: number; title: stri
 
 export function getLinkToPage(card: string) {
   const normalized = card?.toLowerCase() || ''
-  if (normalized.includes('staff') || normalized.includes('tercer')) return '/staff-augmentation'
+  if (normalized.includes('staff') || normalized.includes('tercer')) return '/it-staff-augmentation'
   if (normalized.includes('software')) return '/custom-software'
   if (normalized.includes('cyber') || normalized.includes('ciber')) return '/cyber-security'
   return '/'
