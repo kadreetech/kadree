@@ -40,9 +40,8 @@ export const Navigation = ({ menu, children }: INavigation): ReactElement => {
                       <div className="dropdown dropdown-bottom dropdown-hover">
                         <label htmlFor="submenu" tabIndex={0} className="py-3 px-4 flex justify-center items-center">{item.link_label}</label>
                         <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-primary rounded-md w-52">
-                          <li><Link href="staff-augmentation" className="text-white">{lang === Lang.EN ? 'Staff Augmentation' : 'Tercerización'}</Link></li>
+                          <li><Link href="it-staff-augmentation" className="text-white">{lang === Lang.EN ? 'Staff Augmentation' : 'Tercerización'}</Link></li>
                           <li><Link href="custom-software" className="text-white">{lang === Lang.EN ? 'Custom Software Development' : 'Desarrollo a la Medida'}</Link></li>
-                          <li><Link href="cyber-security" className="text-white">{lang === Lang.EN ? 'Cyber Security' : 'Seguridad Cibernética'}</Link></li>
                           <li><Link href="it-consultancy-and-training" className="text-white">{lang === Lang.EN ? 'Consulting' : 'Consultoría'}</Link></li>
                         </ul>
                       </div>
@@ -72,9 +71,8 @@ export const Navigation = ({ menu, children }: INavigation): ReactElement => {
               <li key={`menu-item-${item.link_link}`} className="mb-6">
                 <div className="text-black font-bold">{item.link_label}</div>
                 <ul tabIndex={0} className="w-full pl-4 font-light">
-                  <li><Link href="staff-augmentation" className="cursor-pointer">{lang === Lang.EN ? 'Staff Augmentation' : 'Tercerización'}</Link></li>
+                  <li><Link href="it-staff-augmentation" className="cursor-pointer">{lang === Lang.EN ? 'Staff Augmentation' : 'Tercerización'}</Link></li>
                   <li><Link href="custom-software" className="cursor-pointer">{lang === Lang.EN ? 'Custom Software Development' : 'Desarrollo a la Medida'}</Link></li>
-                  <li><Link href="cyber-security" className="cursor-pointer">{lang === Lang.EN ? 'Cyber Security' : 'Seguridad Cibernética'}</Link></li>
                   <li><Link href="it-consultancy-and-training" className="cursor-pointer">{lang === Lang.EN ? 'Consulting' : 'Consultoría'}</Link></li>
                 </ul>
               </li>
