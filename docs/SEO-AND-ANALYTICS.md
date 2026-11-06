@@ -63,6 +63,11 @@ Esta entrega prepara el código. No solicita indexación, no modifica la cuenta 
 
 ## Contenido y descubrimiento
 
+- El postbuild ejecuta next-sitemap y scripts/sitemap-presentation.cjs. Añade una instrucción de estilo CSS a los XML, conservando sus elementos, URLs y hreflang; no usa XSLT ni detección de bots.
+- /mapa-del-sitio.html es la vista legible con enlaces a todas las páginas y a los archivos XML. Se genera desde los loc reales de los sitemaps y lleva noindex,follow; no se incluye en el sitemap de páginas.
+- public/sitemap.css es el archivo estático de presentación. Los XML y el HTML se generan en cada build, no se versionan.
+- robots.txt declara el índice y el archivo hijo sitemap-0.xml para descubrimiento directo. El éxito del índice en Search Console no demuestra que Google ya haya contabilizado sus páginas ni que estén indexadas. Si el contador continúa en cero, consultar el hijo en Search Console o enviarlo directamente una vez; no eliminar el índice válido ni prometer plazos de actualización.
+
 - Software a medida tiene diseño bilingüe propio con Lexend Deca, Inter e iconos Material Design mediante la dependencia react-icons existente, sin fuentes de iconos externas.
 - Los títulos y descripciones de servicios distinguen Staff Augmentation en Colombia, desarrollo de software a la medida en Colombia y gobierno de IA/consultoría. Se trabaja la intención de búsqueda sin repetir todas las frases en cada página.
 - Las preguntas frecuentes de inicio, Nosotros y los tres servicios principales están en frontend/lib/answers.ts. Sus respuestas se entregan en el HTML, con controles details accesibles, enlaces internos y FAQPage coherente con el texto visible. Software incluye BreadcrumbList que corresponde a su navegación visible.

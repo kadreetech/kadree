@@ -4,6 +4,7 @@ const { routePairs, contentPath } = require('./lib/routes')
 module.exports = {
   siteUrl,
   generateRobotsTxt: true,
+  robotsTxtOptions: { additionalSitemaps: [siteUrl + '/sitemap-0.xml'] },
   sitemapSize: 7000,
   exclude: ['/api/*', '/404', '/500'],
   transform: async (_config, path) => {

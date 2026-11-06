@@ -45,4 +45,7 @@ test('sitemap contains all language pairs and uses the canonical hostname', asyn
   assert.match(xml, /hreflang="en"/)
   assert.match(xml, /hreflang="es"/)
   assert.doesNotMatch(xml, /https:\/\/www\.kadreetech\.com/)
+  const robots = await readFile(new URL('../public/robots.txt', import.meta.url), 'utf8')
+  assert.match(robots, /Sitemap: https:\/\/kadreetech.com\/sitemap.xml/)
+  assert.match(robots, /Sitemap: https:\/\/kadreetech.com\/sitemap-0.xml/)
 })
