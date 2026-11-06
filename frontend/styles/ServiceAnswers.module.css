@@ -1,0 +1,22 @@
+.section { padding: 88px max(24px, calc((100% - 1400px) / 2)); background: #fff; color: #171827; font-family: 'Lexend Deca', sans-serif; }
+.layout { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 80px; }
+.intro h2 { margin: 0 0 20px; max-width: 430px; font-size: clamp(28px, 2.8vw, 38px); line-height: 1.22; font-weight: 600; letter-spacing: -.025em; text-wrap: balance; }
+.intro p { max-width: 400px; margin: 0 0 26px; color: #5d6278; font: 400 17px/1.65 'Inter', sans-serif; }
+.intro a { color: #5149ab; font-size: 15px; font-weight: 600; }
+.questions details { border-top: 1px solid #deddea; }
+.questions details:last-child { border-bottom: 1px solid #deddea; }
+.questions summary { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 24px 0; cursor: pointer; list-style: none; font-size: 16px; line-height: 1.5; font-weight: 500; }
+.questions summary::-webkit-details-marker { display: none; }
+.questions summary:hover { color: #5149ab; }
+.questions summary:focus-visible, .section a:focus-visible { outline: 3px solid #5149ab; outline-offset: 5px; }
+.questions p { max-width: 70ch; margin: 0 0 26px; color: #5d6278; font: 400 16px/1.7 'Inter', sans-serif; }
+.plus { position: relative; display: block; width: 16px; height: 16px; flex: 0 0 16px; color: #5149ab; }
+.plus::before, .plus::after { content: ''; position: absolute; background: currentColor; }
+.plus::before { left: 0; top: 7px; width: 16px; height: 2px; }
+.plus::after { left: 7px; top: 0; width: 2px; height: 16px; }
+.questions details[open] .plus::after { display: none; }
+.related { display: flex; align-items: baseline; gap: 20px 32px; flex-wrap: wrap; margin-top: 64px; padding-top: 28px; border-top: 1px solid #deddea; }
+.related h3 { margin: 0 auto 0 0; font-size: 15px; font-weight: 600; }
+.related a { color: #5149ab; font-size: 14px; line-height: 1.6; }
+.related a:hover, .intro a:hover { text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 800px) { .section { padding: 60px 24px; }.layout { grid-template-columns: 1fr; gap: 32px; }.intro h2, .intro p { max-width: 100%; }.related { gap: 16px; margin-top: 40px; }.related h3 { width: 100%; }.related a { width: 100%; } }

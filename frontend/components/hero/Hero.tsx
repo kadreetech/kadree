@@ -30,12 +30,12 @@ export const Hero = ({ title, body, button, img, isHome }: IHero) => {
   );
 
   return (
-    <main>
+    <section>
       <div className="hero min-h-screen bg-cover relative max-h-screen" style={{ backgroundImage: imageProps?.src ? `url(${imageProps.src})` : undefined }}>
         <div className="w-full px-4 text-left z-10 max-w-[1280px]">
           <div className="w-full md:w-1/2">
             <div className='mb-4 w-full'>
-              <PortableText value={title} components={HeroTitle} />
+              <h1 className="text-3xl md:text-4xl lg:text-6xl text-white"><PortableText value={title} components={HeroTitle} /></h1>
             </div>
             {body && <PortableText value={body} components={HeroBody} />}
             {button &&
@@ -51,12 +51,12 @@ export const Hero = ({ title, body, button, img, isHome }: IHero) => {
           </div>
         }
       </div>
-    </main>
+    </section>
   )
 }
 
 export const HeroTitle = {
-  block: ({ children }: any) => <h1 className="text-3xl md:text-4xl lg:text-6xl text-white">{children}</h1>,
+  block: ({ children }: any) => <span className="block">{children}</span>,
   marks: {
     strong: ({ children }: any) => <strong>{children}</strong>
   },

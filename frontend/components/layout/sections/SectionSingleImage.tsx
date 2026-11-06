@@ -9,7 +9,6 @@ export const SectionSingleImage = ({ section, isHori }: { section: any; isHori?:
   const imageInline: any = useGetImage(section.section_desc.find((x: any) => x._type === 'image'));
   const { isTablet } = useMediaQueries();
 
-  console.log(section);
 
 
   if (isTablet) {

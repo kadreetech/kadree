@@ -1,0 +1,72 @@
+.page { background: #fff; color: #181927; font-family: 'Lexend Deca', sans-serif; }
+.page ::selection { background: #d7d2f8; color: #151628; }
+.container { width: min(1440px, calc(100% - 64px)); margin-inline: auto; }
+.hero { overflow: hidden; padding: 138px 0 36px; background: radial-gradient(ellipse at 75% 0%, #171d38, #080b16 65%); color: #fff; }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 32px; color: #b8bbcf; font: 400 13px/1.5 'Inter', sans-serif; }
+.breadcrumbs a { color: #d0caff; text-decoration: underline; text-underline-offset: 4px; }
+.heroGrid { display: grid; grid-template-columns: minmax(0, 1.07fr) minmax(0, .93fr); gap: 60px; align-items: center; }
+.heroCopy { padding-block: 22px 48px; }
+.heroCopy h1 { margin: 0; max-width: 760px; font-size: clamp(42px, 4vw, 60px); font-weight: 700; line-height: 1.16; letter-spacing: -.025em; text-wrap: balance; }
+.heroCopy h1 span { color: #42cdcd; }
+.heroCopy p { max-width: 610px; margin: 26px 0 30px; color: #d1d4e1; font: 400 19px/1.55 'Inter', sans-serif; }
+.button { display: inline-flex; align-items: center; justify-content: center; gap: 22px; min-height: 52px; padding: 14px 22px; border-radius: 8px; background: #5149ab; color: #fff; font-size: 15px; line-height: 1.5; font-weight: 600; transition: background-color .2s; }
+.button svg { flex-shrink: 0; width: 21px; height: 21px; }
+.button:hover { background: #635ac5; }
+.page a:focus-visible { outline: 3px solid #0bb3b3; outline-offset: 5px; }
+.heroFigure { min-width: 0; margin: 0; }
+.heroPhoto { position: relative; height: 390px; overflow: hidden; border-radius: 20px; background: #171d38; }
+.heroFigure figcaption { padding: 18px 2px; color: #c0c4d7; font: 400 14px/1.5 'Inter', sans-serif; }
+.highlights { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px 40px; margin: 30px 0 0; padding: 28px 0 0; border-top: 1px solid #272b3b; list-style: none; }
+.highlights li { display: flex; align-items: center; gap: 12px; color: #e4e5ef; font-size: 14px; line-height: 1.5; }
+.highlights svg { width: 22px; height: 22px; color: #36c6c6; }
+.fit { padding: 96px 0; }
+.fitGrid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 110px; align-items: start; }
+.page h2 { margin: 0; max-width: 750px; font-size: clamp(30px, 2.8vw, 42px); line-height: 1.2; font-weight: 600; letter-spacing: -.025em; text-wrap: balance; }
+.fitGrid > div > p { max-width: 65ch; margin: 24px 0 0; color: #5e6279; font: 400 17px/1.7 'Inter', sans-serif; }
+.fitPoints article { padding: 0 0 28px; }
+.fitPoints article + article { padding-top: 28px; border-top: 1px solid #dfddea; }
+.fitPoints h3 { margin: 0 0 12px; font-size: 20px; line-height: 1.35; font-weight: 500; }
+.fitPoints p { margin: 0; color: #5e6279; font: 400 16px/1.65 'Inter', sans-serif; }
+.capabilities { padding: 86px 0 92px; background: #f4f2fd; }
+.heading { max-width: 820px; margin: 0 auto 48px; text-align: center; }
+.heading p { max-width: 650px; margin: 20px auto 0; color: #5e6279; font: 400 17px/1.6 'Inter', sans-serif; }
+.capabilityGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.capabilityGrid article { padding: 32px; border-radius: 14px; background: #fff; }
+.capabilityIcon { color: #6757c8; width: 38px; height: 38px; margin-bottom: 20px; }
+.capabilityGrid h3 { margin: 0 0 12px; font-size: 21px; font-weight: 500; line-height: 1.3; }
+.capabilityGrid p { margin: 0; max-width: 65ch; color: #5e6279; font: 400 16px/1.65 'Inter', sans-serif; }
+.capabilityGrid ul { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 24px 0 0; padding-top: 20px; border-top: 1px solid #e7e5ef; list-style: none; }
+.capabilityGrid li { font: 500 12px/1.5 'Inter', sans-serif; color: #5149ab; }
+.process { padding: 90px 0 100px; }
+.steps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 28px; list-style: none; margin: 56px 0 0; padding: 0; counter-reset: none; }
+.steps li { border-top: 2px solid #d7d1ef; padding-top: 24px; }
+.stepNumber { display: block; margin-bottom: 18px; color: #6757c8; font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.steps h3 { margin: 0 0 10px; font-size: 18px; font-weight: 500; line-height: 1.35; }
+.steps p { margin: 0; color: #5e6279; font: 400 14px/1.65 'Inter', sans-serif; }
+.model { padding: 86px 0 90px; background: #080b16; color: #fff; }
+.modelGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 110px; align-items: start; }
+.modelGrid > div > p { margin: 26px 0 0; max-width: 580px; color: #c4c8d9; font: 400 17px/1.7 'Inter', sans-serif; }
+.modelGrid article { display: flex; gap: 18px; padding: 0 0 24px; }
+.modelGrid article + article { padding-top: 24px; border-top: 1px solid #272b3b; }
+.modelGrid article > svg { width: 24px; height: 24px; flex-shrink: 0; color: #36c6c6; }
+.modelGrid h3 { margin: 0 0 8px; font-size: 18px; font-weight: 500; }
+.modelGrid article p { margin: 0; color: #c4c8d9; font: 400 15px/1.65 'Inter', sans-serif; }
+.final { padding: 90px 0 96px; background: radial-gradient(ellipse at 50% 0%, #171d38, #080b16 80%); color: #fff; text-align: center; }
+.final h2 { max-width: 800px; margin-inline: auto; }
+.final p { max-width: 650px; margin: 24px auto 30px; color: #c4c8d9; font: 400 17px/1.65 'Inter', sans-serif; }
+.final .button { background: #0bb3b3; color: #06252b; }
+.final .button:hover { background: #37caca; }
+@media (max-width: 1050px) {
+  .heroGrid { gap: 32px; }.heroPhoto { height: 360px; }.heroCopy h1 { font-size: 46px; }
+  .fitGrid, .modelGrid { gap: 48px; }.steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 720px) {
+  .container { width: calc(100% - 40px); }.hero { padding-top: 108px; }.breadcrumbs { margin-bottom: 24px; }
+  .heroGrid { grid-template-columns: 1fr; gap: 8px; }.heroCopy { padding: 0 0 24px; }.heroCopy h1 { font-size: 40px; }.heroCopy p { font-size: 17px; line-height: 1.6; }
+  .heroPhoto { height: 280px; }.heroFigure figcaption { padding-bottom: 0; }.highlights { flex-direction: column; gap: 16px; }
+  .fit, .process { padding: 60px 0; }.fitGrid, .modelGrid { grid-template-columns: 1fr; gap: 32px; }
+  .capabilities, .model, .final { padding: 60px 0; }.capabilityGrid { grid-template-columns: 1fr; gap: 18px; }.capabilityGrid article { padding: 26px; }
+  .steps { grid-template-columns: 1fr; gap: 24px; margin-top: 36px; }.steps li { position: relative; padding: 20px 0 0 48px; }.stepNumber { position: absolute; left: 0; top: 20px; }
+  .heading { margin-bottom: 32px; text-align: left; }.heading p { font-size: 16px; }.modelGrid > div > p, .final p { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { .button { transition: none; } }

@@ -3,7 +3,6 @@ import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import type { NextPage } from 'next';
 import { createClient } from "next-sanity";
 import { ImageUrlBuilder } from 'next-sanity-image';
-import { HtmlHead } from '../components/head/HtmlHead';
 
 import { HomeLayout, IMainLayout, } from '../components/layout/HomeLayout';
 
@@ -12,7 +11,6 @@ const Home: NextPage<any, any> = ({ menu, page, stepGraphics, ctas, forms }: IMa
 
   return (
     <div className={'w-full overflow-x-hidden'}>
-      <HtmlHead />
       <HomeLayout headline={'Here'} menu={menu} page={page} stepGraphics={stepGraphics} ctas={ctas} forms={forms} />
     </div>
   )
@@ -20,7 +18,7 @@ const Home: NextPage<any, any> = ({ menu, page, stepGraphics, ctas, forms }: IMa
 export const client = createClient({
   projectId: "z72wzr8g",
   dataset: "production",
-  
+
   apiVersion: "2022-11-03",
   useCdn: false
 });
@@ -35,8 +33,8 @@ export async function getStaticProps() {
   return {
     props: {
       menu,
-      page,      
-      
+      page,
+
       stepGraphics,
       ctas,
       forms
