@@ -1,0 +1,46 @@
+@namespace sm url("http://www.sitemaps.org/schemas/sitemap/0.9");
+@font-face { font-family: 'Lexend Deca'; src: url('/fonts/lexend-deca-latin.woff2') format('woff2'); font-weight: 200 800; font-display: swap; }
+@font-face { font-family: Inter; src: url('/fonts/inter-latin.woff2') format('woff2'); font-weight: 400 600; font-display: swap; }
+:root { color-scheme: light; background: #f4f2fd; color: #181927; font-family: Inter, sans-serif; line-height: 1.6; }
+* { box-sizing: border-box; }
+::selection { background: #d7d2f8; color: #181927; }
+body { margin: 0; }
+header { display: flex; align-items: center; justify-content: space-between; gap: 24px; background: #080b16; padding: 24px max(24px, calc((100% - 1120px) / 2)); }
+header img { display: block; max-width: 100%; }
+a { color: #5149ab; text-underline-offset: 4px; overflow-wrap: anywhere; }
+a:hover { color: #302973; }
+a:focus-visible { outline: 3px solid #0bb3b3; outline-offset: 5px; }
+.back { color: #fff; font-size: 14px; }
+.back:hover { color: #59d4d4; }
+main { max-width: 1168px; padding: 64px 24px 40px; margin: auto; }
+h1 { font: 600 clamp(32px, 5vw, 48px)/1.15 'Lexend Deca', sans-serif; letter-spacing: -.025em; margin: 0 0 20px; }
+.intro { max-width: 68ch; margin: 0 0 28px; color: #52576d; }
+nav { display: flex; flex-wrap: wrap; gap: 12px 32px; margin: 0 0 36px; }
+nav a { min-height: 44px; display: inline-flex; align-items: center; font-weight: 600; }
+table { width: 100%; border-collapse: collapse; background: white; }
+caption { text-align: left; padding: 0 0 16px; color: #52576d; font-size: 14px; }
+th { background: #5149ab; color: white; text-align: left; font-weight: 600; }
+th, td { padding: 16px 24px; vertical-align: top; }
+td { border-bottom: 1px solid #e5e1f0; }
+td:first-child { width: 75%; }
+td a { display: inline-flex; align-items: center; min-height: 32px; }
+tr:nth-child(even) td { background: #fbfaff; }
+.note { max-width: 72ch; color: #52576d; font-size: 14px; margin-top: 28px; }
+footer { max-width: 1168px; padding: 16px 24px 40px; margin: auto; color: #52576d; font-size: 13px; }
+/* XML stays XML. This presentation needs neither XSLT nor JavaScript. */
+sm|sitemapindex, sm|urlset { display: block; max-width: 1168px; padding: 56px 24px; margin: auto; }
+sm|sitemapindex::before, sm|urlset::before { display: block; font: 600 clamp(28px, 5vw, 42px)/1.2 'Lexend Deca', sans-serif; margin-bottom: 24px; color: #181927; }
+sm|sitemapindex::before { content: 'Kadree Tech · Índice de sitemaps'; }
+sm|urlset::before { content: 'Kadree Tech · Páginas del sitio'; }
+sm|sitemapindex::after, sm|urlset::after { display: block; content: 'Vista con enlaces: /mapa-del-sitio.html · Este XML es para motores de búsqueda. Su presencia no confirma indexación.'; margin-top: 24px; color: #52576d; font-size: 14px; }
+sm|sitemap, sm|url { display: block; background: white; padding: 18px 24px; border-bottom: 1px solid #e5e1f0; }
+sm|url:nth-child(even) { background: #fbfaff; }
+sm|url > *, sm|sitemap > * { display: none; }
+sm|url > sm|loc, sm|sitemap > sm|loc { display: block; color: #5149ab; overflow-wrap: anywhere; user-select: text; }
+@media (max-width: 600px) {
+  header { padding: 20px; gap: 16px; }
+  main, sm|sitemapindex, sm|urlset { padding: 36px 20px; }
+  th, td { padding: 14px 12px; font-size: 14px; }
+  td:first-child { width: 68%; }
+  sm|sitemap, sm|url { padding: 16px; font-size: 14px; }
+}
