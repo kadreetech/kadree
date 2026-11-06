@@ -1,6 +1,7 @@
+import { spanishContent } from '../../lib/cms-translations'
 import { ReactNode, useState } from 'react'
 import "yup-phone"
-import { useMainContext } from '../../context/context'
+import { Lang, useMainContext } from '../../context/context'
 import { Hero, IHero } from '../hero/Hero'
 import { Navigation } from '../navigation/Navigation'
 import { IMainLayout } from './HomeLayout'
@@ -24,7 +25,10 @@ export interface ISection {
 
 export const PageLayout = ({ menu, page, stepGraphics, ctas, forms, images, isMainHorizontal, cardType, testimonials }: IMainLayout) => {
   const { lang } = useMainContext()
-  const pageContent = page.find(x => x['__i18n_lang'] === lang)
+  const source = page.find(x => x['__i18n_lang'] === lang) || page[0]
+  const pageContent = lang === Lang.ES ? spanishContent(source) : source
+  const localizedSteps = lang === Lang.ES ? spanishContent(stepGraphics || []) : (stepGraphics || [])
+  const localizedCtas = lang === Lang.ES ? spanishContent(ctas || []) : (ctas || [])
   const router = useRouter()
 
   const heroMain = pageContent?.page_hero
@@ -35,9 +39,9 @@ export const PageLayout = ({ menu, page, stepGraphics, ctas, forms, images, isMa
     body: heroMain?.hero_body,
     button: {
       color: 'blue',
-      isInternal: !heroMain?.hero_button.button_redirect,
-      label: heroMain?.hero_button.button_label,
-      link: heroMain?.hero_button.button_link
+      isInternal: !heroMain?.hero_button?.button_redirect,
+      label: heroMain?.hero_button?.button_label || (lang === Lang.ES ? 'Consultar' : 'Enquire'),
+      link: heroMain?.hero_button?.button_link
     }
   }
 
@@ -48,15 +52,16 @@ export const PageLayout = ({ menu, page, stepGraphics, ctas, forms, images, isMa
   return (
     <ParallaxProvider>
       <Navigation menu={menu} >
+        <main>
         {hero && <Hero {...hero} />}
 
         {pageSections && pageSections.map(x => {
           const allSections: ReactNode[] = []
           if (x.section_content === 'image') allSections.push(<SectionSingleImage section={x} key={`section-single-image-${x.section_title}`} isHori={isMainHorizontal} />)
-          if (x.section_content === 'steps_graphic') allSections.push(<SectionSteps section={x} stepGraphics={stepGraphics || []} key={`section-steps-graphic-${x.section_title}`} />)
+          if (x.section_content === 'steps_graphic') allSections.push(<SectionSteps section={x} stepGraphics={localizedSteps} key={`section-steps-graphic-${x.section_title}`} />)
           if (x.section_content === 'form') allSections.push(<SectionForm section={x} formsCollection={forms || []} key={`section-form-${x.section_title}`} />)
           if (x.section_content === 'testimonials') allSections.push(<SectionTestimonials section={x} testimonialsCollection={testimonials || []} key={`section-testimonials-${x.section_title}`} />)
-          if (x.section_content === 'cta') allSections.push(<SectionCta section={x} ctaCollection={ctas || []} key={`section-cta-${x.section_title}`} />)
+          if (x.section_content === 'cta') allSections.push(<SectionCta section={x} ctaCollection={localizedCtas} key={`section-cta-${x.section_title}`} />)
           if (x.section_content === 'textcards') {
             if (router.pathname.includes('consultancy')) {
               allSections.push(<SectionCircleImage section={x} key={`section-text-cards-${x.section_title}`} />);
@@ -90,6 +95,7 @@ export const PageLayout = ({ menu, page, stepGraphics, ctas, forms, images, isMa
           }
           return allSections
         })}
+        </main>
       </Navigation>
     </ParallaxProvider>
   )

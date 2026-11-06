@@ -3,16 +3,14 @@ import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import type { NextPage } from 'next';
 import { ImageUrlBuilder } from 'next-sanity-image';
 import { client } from '.';
-import { HtmlHead } from '../components/head/HtmlHead';
 import { IMainLayout } from '../components/layout/HomeLayout';
 import { PageLayout } from '../components/layout/PageLayout';
 
 
-const AboutUs: NextPage<any, any> = ({ menu, page, stepGraphics, ctas, forms, images, testimonials }: IMainLayout) => {
+const StaffAugmentation: NextPage<any, any> = ({ menu, page, stepGraphics, ctas, forms, images, testimonials }: IMainLayout) => {
 
   return (
     <div className={'w-screen'}>
-      <HtmlHead />
       <PageLayout headline={'Here'} menu={menu} page={page} stepGraphics={stepGraphics} ctas={ctas} forms={forms} images={images} testimonials={testimonials} />
     </div>
   )
@@ -21,7 +19,7 @@ const AboutUs: NextPage<any, any> = ({ menu, page, stepGraphics, ctas, forms, im
 
 export async function getStaticProps() {
   const menu: any[] = await client.fetch(`*[_type == "setting"]`);
-  const page: any[] = await client.fetch(`*[_type == "page" && page_title match "about*"]`);
+  const page: any[] = await client.fetch(`*[_type == "page" && page_title match "staff*"]`);
   const stepGraphics: any[] = await client.fetch(`*[_type == "stepsgraphics"]`);
   const ctas: any[] = await client.fetch(`*[_type == "cta"]`);
   const forms: any[] = await client.fetch(`*[_type == "mainform"]`);
@@ -40,4 +38,4 @@ export async function getStaticProps() {
   };
 }
 
-export default AboutUs
+export default StaffAugmentation

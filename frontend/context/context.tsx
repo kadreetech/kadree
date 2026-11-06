@@ -1,42 +1,18 @@
-import { createContext, ReactElement, ReactNode, useContext, useState } from "react";
+import { createContext, ReactElement, ReactNode, useContext } from 'react'
+import { useRouter } from 'next/router'
+import { isEnglishPath, localizedPath } from '../lib/site'
 
-export enum Lang {
-  EN = 'en_EN',
-  ES = 'es_ES',
-}
-
-export interface IMainContext {
-  lang?: Lang;
-  setLang?: () => void;
-}
-
-const MainContext = createContext<IMainContext>({
-  lang: undefined,
-  setLang: undefined
-});
+export enum Lang { EN = 'en_EN', ES = 'es_ES' }
+export interface IMainContext { lang?: Lang; setLang?: () => void }
+const MainContext = createContext<IMainContext>({ lang: Lang.ES })
 
 export const MainContextWrapper = ({ children }: { children: ReactNode }): ReactElement => {
-  const [lang, setLang] = useState<Lang>(Lang.ES);
-
+  const router = useRouter()
+  const english = isEnglishPath(router.pathname)
   const handleLanguage = () => {
-    switch (lang) {
-      case Lang.EN:
-        setLang(Lang.ES)
-        break;
-      case Lang.ES:
-        setLang(Lang.EN)
-        break;
-      default:
-        setLang(Lang.EN)
-        break;
-    }
+    const suffix = router.asPath.match(/[?#].*$/)?.[0] || ''
+    void router.push(`${localizedPath(router.pathname, !english)}${suffix}`)
   }
-
-  return (
-    <MainContext.Provider value={{ lang, setLang: handleLanguage }}>
-      {children}
-    </MainContext.Provider>
-  );
+  return <MainContext.Provider value={{ lang: english ? Lang.EN : Lang.ES, setLang: handleLanguage }}>{children}</MainContext.Provider>
 }
-
-export const useMainContext = () => (useContext<IMainContext>(MainContext));
+export const useMainContext = () => useContext(MainContext)

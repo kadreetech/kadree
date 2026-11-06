@@ -1,3 +1,4 @@
+import { WHATSAPP_URL } from '../../lib/site'
 import Image from 'next/image'
 import { ReactElement, useState } from 'react'
 import { Lang, useMainContext } from '../../context/context'
@@ -122,7 +123,7 @@ export const ConsultancyLayout = ({ menu }: ConsultancyLayoutProps): ReactElemen
             <p className={styles.eyebrow}>{text.eyebrow}</p>
             <h1>{text.heroStart} <span>{text.heroAccent}</span> {text.heroEnd}</h1>
             <p className={styles.heroBody}>{text.heroBody}</p>
-            <a className={styles.primaryButton} href="mailto:info@kadreetech.com?subject=Diagnóstico%20de%20consultoría">{text.diagnostic}</a>
+            <a className={styles.primaryButton} href={WHATSAPP_URL}>{text.diagnostic}</a>
             <div className={styles.chips}>{text.chips.map((chip) => <span key={chip}>{chip}</span>)}</div>
           </div>
         </section>
@@ -163,9 +164,10 @@ export const ConsultancyLayout = ({ menu }: ConsultancyLayoutProps): ReactElemen
         <section className={styles.finalCta}>
           <h2>{text.finalTitle}</h2>
           <p className={styles.multiline}>{text.finalBody}</p>
-          <a href="mailto:info@kadreetech.com?subject=Consulta%20sobre%20servicios">{text.talk}</a>
+          <a href={WHATSAPP_URL}>{text.talk}</a>
           <div>{text.finalLinks.map((item) => <span key={item}>{item}</span>)}</div>
         </section>
+        <ServiceAnswers path="/it-consultancy-and-training/" />
       </main>
     </HomeNavigation>
   )
@@ -179,7 +181,7 @@ const Governance = ({ content }: { content: any }) => (
     <Quote>{content.quote}</Quote>
     <h3 className={styles.processTitle}>{content.processTitle}</h3>
     <div className={styles.processGrid}>{content.process.map(([number, title, body]: string[]) => <article key={number}><span>{number}</span><h4>{title}</h4><p>{body}</p></article>)}</div>
-    <div className={styles.inPanelCta}><h3>{content.ctaTitle}</h3><p>{content.ctaBody}</p><strong>{content.ctaNote}</strong><a className={styles.primaryButton} href="mailto:info@kadreetech.com?subject=Diagnóstico%20de%20gobierno%20de%20IA">{content.ctaButton}</a></div>
+    <div className={styles.inPanelCta}><h3>{content.ctaTitle}</h3><p>{content.ctaBody}</p><strong>{content.ctaNote}</strong><a className={styles.primaryButton} href={WHATSAPP_URL}>{content.ctaButton}</a></div>
   </div>
 )
 
@@ -188,7 +190,7 @@ const Training = ({ content }: { content: any }) => (
     <h2>{content.title}</h2><h3 className={styles.subtitle}>{content.subtitle}</h3><p className={styles.panelLead}>{content.body}</p><h3 className={styles.panelSectionTitle}>{content.include}</h3>
     <div className={styles.trainingGrid}>{content.cards.map(([icon, title, body]: string[]) => <article key={title}><Image src={icon} alt="" width={44} height={44} /><h4>{title}</h4><p>{body}</p></article>)}</div>
     <Quote>{content.quote}</Quote>
-    <a className={styles.primaryButton} href="mailto:info@kadreetech.com?subject=Capacitación%20en%20IA">{content.ctaButton}</a>
+    <a className={styles.primaryButton} href={WHATSAPP_URL}>{content.ctaButton}</a>
   </div>
 )
 
@@ -205,8 +207,9 @@ const Management = ({ content }: { content: any }) => (
       <article className={styles.kadreeCard}><h3>{content.kadree}</h3>{content.kadreeItems.map((item: string) => <p key={item}><Image src="/img/consultancy/check-green.svg" alt="" width={16} height={16} />{item}</p>)}</article>
     </div>
     <Quote>{content.quote}</Quote>
-    <a className={styles.primaryButton} href="mailto:info@kadreetech.com?subject=Gerencia%20de%20proyectos">{content.ctaButton}</a>
+    <a className={styles.primaryButton} href={WHATSAPP_URL}>{content.ctaButton}</a>
   </div>
 )
 
 const Quote = ({ children }: { children: string }) => <blockquote className={styles.quote}><Image src="/img/consultancy/quote.svg" alt="" width={25} height={19} /><p>{children}</p></blockquote>
+import { ServiceAnswers } from './ServiceAnswers'

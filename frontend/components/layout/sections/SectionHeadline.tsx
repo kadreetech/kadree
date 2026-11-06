@@ -17,7 +17,7 @@ export const SectionHeadline = ({ header, body, color, align = 'text-center', is
         <h2 className={`w-1/2 text-2xl mr-4 font-bold lg:text-3xl text-right ${color === 'white' ? 'text-white' : 'text-black'} `}>{header}</h2>
         {body &&
           <div className='w-1/2 '>
-            <PortableText value={body} components={SectionTitle} />
+            <PortableText value={body.filter((block: any) => block._type !== 'image')} components={SectionTitle} />
           </div>
         }
         {inlineImage && <div className='w-100 max-w-xs mx-auto'>
@@ -31,7 +31,7 @@ export const SectionHeadline = ({ header, body, color, align = 'text-center', is
     <div className={`w-full px-4 md:container mx-auto relative mb-6 ${align}`}>
       <h2 className={`text-2xl font-bold lg:text-3xl ${color === 'white' ? 'text-white' : 'text-black'} mb-2`}>{header}</h2>
       {body &&
-        <PortableText value={body} components={SectionTitle} />}
+        <PortableText value={body.filter((block: any) => block._type !== 'image')} components={SectionTitle} />}
 
       {inlineImage && <div className='w-100 max-w-xs mx-auto'>
         <Image {...inlineImage} alt='' layout='responsive' className='' />

@@ -2,18 +2,16 @@ import imageUrlBuilder from '@sanity/image-url';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import type { NextPage } from 'next';
 import { ImageUrlBuilder } from 'next-sanity-image';
-import { client } from '.';
-import { HtmlHead } from '../components/head/HtmlHead';
+import { client, urlFor } from '.';
 import { IMainLayout } from '../components/layout/HomeLayout';
-import { PageLayout } from '../components/layout/PageLayout';
+import { CustomSoftwareLayout } from '../components/layout/CustomSoftwareLayout';
 
 
-const StaffAugmentation: NextPage<any, any> = ({ menu, page, stepGraphics, ctas, forms, images, testimonials }: IMainLayout) => {
+const CustomSoftware: NextPage<any, any> = ({ menu, page, stepGraphics, ctas, forms, images}: IMainLayout) => {
 
   return (
-    <div className={'w-screen'}>
-      <HtmlHead />
-      <PageLayout headline={'Here'} menu={menu} page={page} stepGraphics={stepGraphics} ctas={ctas} forms={forms} images={images} testimonials={testimonials} />
+    <div className={'w-full'}>
+      <CustomSoftwareLayout menu={menu} heroImage={urlFor(page[0].page_hero.hero_image).width(1400).quality(85).url()} />
     </div>
   )
 }
@@ -21,12 +19,11 @@ const StaffAugmentation: NextPage<any, any> = ({ menu, page, stepGraphics, ctas,
 
 export async function getStaticProps() {
   const menu: any[] = await client.fetch(`*[_type == "setting"]`);
-  const page: any[] = await client.fetch(`*[_type == "page" && page_title match "staff*"]`);
+  const page: any[] = await client.fetch(`*[_type == "page" && page_title match "custom*"]`);
   const stepGraphics: any[] = await client.fetch(`*[_type == "stepsgraphics"]`);
   const ctas: any[] = await client.fetch(`*[_type == "cta"]`);
   const forms: any[] = await client.fetch(`*[_type == "mainform"]`);
   const images: any[] = await client.fetch(`*[_type == "images"]`);
-  const testimonials: any[] = await client.fetch(`*[_type == "testimonials"]`);
   return {
     props: {
       menu,
@@ -34,10 +31,9 @@ export async function getStaticProps() {
       stepGraphics,
       ctas,
       forms,
-      images,
-      testimonials,
+      images
     }
   };
 }
 
-export default StaffAugmentation
+export default CustomSoftware

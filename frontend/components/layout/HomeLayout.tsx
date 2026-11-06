@@ -1,3 +1,4 @@
+import { WHATSAPP_URL } from '../../lib/site'
 import Image from 'next/image'
 import { useNextSanityImage } from 'next-sanity-image'
 import { Lang, useMainContext } from '../../context/context'
@@ -81,7 +82,7 @@ export const HomeLayout = ({ menu, page, stepGraphics }: IMainLayout) => {
           <div className={styles.heroContent}>
             <h1>{text.heroTitle}</h1>
             <p>{text.heroBody}</p>
-            <a className={styles.primaryButton} href="mailto:info@kadreetech.com">{text.contact}</a>
+            <a className={styles.primaryButton} href={WHATSAPP_URL}>{text.contact}</a>
           </div>
         </section>
 
@@ -125,9 +126,10 @@ export const HomeLayout = ({ menu, page, stepGraphics }: IMainLayout) => {
             <div className={`${styles.mapImage} ${styles.mapDesktop}`}><Image src={Map2XL} alt={lang === Lang.ES ? 'Zonas horarias donde trabaja Kadree Tech' : 'Time zones where Kadree Tech works'} /></div>
             <div className={`${styles.mapImage} ${styles.mapMobile}`}><Image src={MapXS} alt={lang === Lang.ES ? 'Zonas horarias donde trabaja Kadree Tech' : 'Time zones where Kadree Tech works'} /></div>
             <p>{text.closing}</p>
-            <a className={styles.secondaryButton} href="mailto:info@kadreetech.com">{text.contact}</a>
+            <a className={styles.secondaryButton} href={WHATSAPP_URL}>{text.contact}</a>
           </div>
         </section>
+        <ServiceAnswers path="/" />
       </main>
     </HomeNavigation>
   )
@@ -156,3 +158,4 @@ export function getLinkToPage(card: string) {
   if (normalized.includes('cyber') || normalized.includes('ciber')) return '/cyber-security'
   return '/'
 }
+import { ServiceAnswers } from './ServiceAnswers'

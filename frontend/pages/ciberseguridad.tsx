@@ -1,6 +1,5 @@
 import type { NextPage } from 'next';
 import { client } from '.';
-import { HtmlHead } from '../components/head/HtmlHead';
 import { IMainLayout } from '../components/layout/HomeLayout';
 import { PageLayout } from '../components/layout/PageLayout';
 
@@ -9,7 +8,6 @@ const CyberSecurity: NextPage<any, any> = ({ menu, page, stepGraphics, ctas, for
 
   return (
     <div className={'w-screen'}>
-      <HtmlHead />
       <PageLayout headline={'Here'} isMainHorizontal menu={menu} page={page} stepGraphics={stepGraphics} ctas={ctas} forms={forms} images={images} testimonials={testimonials} />
     </div>
   )

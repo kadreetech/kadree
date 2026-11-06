@@ -1,3 +1,5 @@
+import { localizedPath } from '../../lib/site'
+import { Lang, useMainContext } from '../../context/context'
 import knight from './icons/knight.svg'
 import lab from './icons/lab.svg'
 import staff from './icons/staff.svg'
@@ -10,9 +12,10 @@ import Link from 'next/link'
 import { getLinkToPage } from '../layout/HomeLayout'
 
 export const IconCard = ({ card, isLink }: any) => {
+  const { lang } = useMainContext()
   if (isLink) {
     return (
-      <Link href={getLinkToPage(card?.card_name)} passHref>
+      <Link href={localizedPath(getLinkToPage(card?.card_name), lang === Lang.EN)} passHref>
         <a className='h-fit sm:w-[30%] w-full'>
           <Card card={card} isLink />
         </a>

@@ -1,7 +1,6 @@
 import { PortableText } from '@portabletext/react';
 import type { NextPage } from 'next';
 import { client } from '.';
-import { HtmlHead } from '../components/head/HtmlHead';
 import { IMainLayout } from '../components/layout/HomeLayout';
 import { SectionColor } from '../components/layout/sections/SectionColor';
 import { SectionHeadline } from '../components/layout/sections/SectionHeadline';
@@ -22,14 +21,11 @@ const TermsAndConditions: NextPage<any, any> = ({ menu, page }: IMainLayout) => 
   };
   return (
     <div className={'w-screen'}>
-      <HtmlHead />
       <Navigation menu={menu}>
-        <SectionColor>
-          <SectionHeadline
-            header={pageContent.terms_and_conditions_page_name}
-          />
+        <div className="pt-28"><SectionColor>
+          <h1 className="text-3xl font-bold mb-8">{pageContent.terms_and_conditions_page_name}</h1>
           <PortableText value={pageContent.terms_and_conditions_body} components={TermsAndConditionsBody} />
-        </SectionColor>
+        </SectionColor></div>
       </Navigation>
     </div>
   )

@@ -1,3 +1,4 @@
+import { localizedPath, WHATSAPP_URL } from '../../lib/site'
 import Link from 'next/link'
 import React, { ReactNode } from 'react'
 import whiteLogo from './kadree-tech-white.svg'
@@ -10,6 +11,8 @@ import { PortableText } from '@portabletext/react'
 export const Footer = ({ footer }: { footer: any }) => {
   const { isTablet, isLaptop } = useMediaQueries();
   const { lang } = useMainContext()
+
+  if (!footer) return null
 
   const Social = () => {
     return (
@@ -30,12 +33,12 @@ export const Footer = ({ footer }: { footer: any }) => {
 
   const Logos = () => (
     <div className='w-full flex flex-row justify-start items-center z-40 mb-6 max-w-[400px]'>
-      <Link href="/">
+      <Link href={localizedPath('/', lang === Lang.EN)}>
         <a className="btn btn-ghost hover:bg-transparent w-2/3 flex justify-center items-center h-auto">
           <Image src={whiteLogo} alt={'Kadree Tech Logo'} priority />
         </a>
       </Link>
-      <Link href="/">
+      <Link href={localizedPath('/', lang === Lang.EN)}>
         <a className="btn btn-ghost hover:bg-transparent w-1/3 max-w-[80px] flex justify-center items-center h-auto">
           <Image src={marcaCo} alt={'Kadree Tech Logo'} priority />
         </a>
@@ -52,7 +55,7 @@ export const Footer = ({ footer }: { footer: any }) => {
           `© Kadree Tech S.A.S. ${new Date().getFullYear()}. Todos los derechos reservados.`
         }
       </div>
-      <Link href={`/terms-and-conditions`} className='mt-4 text-accent'>Terms and Conditions</Link>
+      <Link href={localizedPath('/terms-and-conditions/', lang === Lang.EN)} className='mt-4 text-accent'>{lang === Lang.EN ? 'Terms and Conditions' : 'Términos y condiciones'}</Link>
     </div>
   )
 
@@ -169,7 +172,7 @@ const FooterInfo = ({ label, children }: { label: string, children: ReactNode })
 }
 
 const Linkeding = () => <FooterIcons name='LinkedIn' link='https://www.linkedin.com/company/kadreetech/'><Image src="/img/consultancy/linkedin.svg" alt="LinkedIn" width={32} height={32} /></FooterIcons>
-const Whatasapp = () => <FooterIcons name='Whatsapp' link='https://api.whatsapp.com/send?phone=573008013539'><Image src="/img/consultancy/whatsapp.svg" alt="WhatsApp" width={32} height={32} /></FooterIcons>
+const Whatasapp = () => <FooterIcons name='Whatsapp' link={WHATSAPP_URL}><Image src="/img/consultancy/whatsapp.svg" alt="WhatsApp" width={32} height={32} /></FooterIcons>
 
 
 const FooterIcons = ({ link, name, children }: { link: string, name: string, children: ReactNode }) => {

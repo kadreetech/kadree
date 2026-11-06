@@ -11,3 +11,47 @@
 # Next.js runtime configuration
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# Resolve legacy links at the edge before Next.js trailing-slash normalization.
+# Netlify normalizes slash variants when matching these paths.
+[[redirects]]
+  from = "/about-us"
+  to = "/nosotros/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/custom-software"
+  to = "/desarrollo-software/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/cyber-security"
+  to = "/ciberseguridad/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/it-consultancy-and-training"
+  to = "/consultoria-tecnologica/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/it-staff-augmentation"
+  to = "/ampliacion-equipos-ti/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/staff-augmentation"
+  to = "/tercerizacion-talento-ti/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/terms-and-conditions"
+  to = "/terminos-y-condiciones/"
+  status = 301
+  force = true

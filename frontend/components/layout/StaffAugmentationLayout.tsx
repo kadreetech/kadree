@@ -1,6 +1,6 @@
-import Head from 'next/head'
+import { WHATSAPP_URL } from '../../lib/site'
 import Image from 'next/image'
-import { ReactElement, useEffect, useState } from 'react'
+import { ReactElement, useState } from 'react'
 import { Lang, useMainContext } from '../../context/context'
 import styles from '../../styles/StaffAugmentation.module.css'
 import { HomeNavigation } from '../navigation/HomeNavigation'
@@ -143,55 +143,12 @@ export const StaffAugmentationLayout = ({ menu }: StaffAugmentationLayoutProps):
   const text = translations[lang]
   const [activeTestimonial, setActiveTestimonial] = useState(0)
   const testimonial = text.testimonials[activeTestimonial]
-  const canonical = 'https://www.kadreetech.com/it-staff-augmentation/'
-
-  useEffect(() => {
-    const previousLanguage = document.documentElement.lang
-    document.documentElement.lang = lang === Lang.ES ? 'es' : 'en'
-
-    return () => {
-      document.documentElement.lang = previousLanguage
-    }
-  }, [lang])
-
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: lang === Lang.ES ? 'Staff Augmentation TI' : 'IT Staff Augmentation',
-    description: text.metaDescription,
-    url: canonical,
-    provider: { '@type': 'Organization', name: 'Kadree Tech', url: 'https://www.kadreetech.com/' },
-    areaServed: ['Colombia', 'United States', 'Latin America'],
-    review: text.testimonials.map((item) => ({
-      '@type': 'Review',
-      author: { '@type': 'Person', name: item.name },
-      reviewBody: item.quote,
-    })),
-  }
-
   const changeTestimonial = (direction: number) => {
     setActiveTestimonial((current) => (current + direction + text.testimonials.length) % text.testimonials.length)
   }
 
   return (
     <HomeNavigation menu={menu}>
-      <Head>
-        <title>{text.metaTitle}</title>
-        <meta name="description" content={text.metaDescription} />
-        <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
-        <link rel="canonical" href={canonical} />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={text.metaTitle} />
-        <meta property="og:description" content={text.metaDescription} />
-        <meta property="og:url" content={canonical} />
-        <meta property="og:image" content="https://www.kadreetech.com/img/staff-augmentation-2026/team.png" />
-        <meta property="og:locale" content={lang === Lang.ES ? 'es_ES' : 'en_US'} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={text.metaTitle} />
-        <meta name="twitter:description" content={text.metaDescription} />
-        <meta name="twitter:image" content="https://www.kadreetech.com/img/staff-augmentation-2026/team.png" />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-      </Head>
 
       <main className={styles.page} lang={lang === Lang.ES ? 'es' : 'en'}>
         <section className={styles.hero}>
@@ -201,7 +158,7 @@ export const StaffAugmentationLayout = ({ menu }: StaffAugmentationLayoutProps):
               <p className={styles.eyebrow}>{text.heroLabel}</p>
               <h1>{text.heroStart} <span>{text.heroAccent}</span> {text.heroEnd}</h1>
               <p className={styles.heroBody}>{text.heroBody}</p>
-              <a className={styles.primaryButton} href="mailto:info@kadreetech.com?subject=Staff%20Augmentation">{text.heroCta}</a>
+              <a className={styles.primaryButton} href={WHATSAPP_URL}>{text.heroCta}</a>
             </div>
             <div className={styles.heroImage}>
               <Image src={asset('team.png')} alt={lang === Lang.ES ? 'Equipo diverso de profesionales tecnológicos' : 'Diverse team of technology professionals'} width={715} height={462} priority />
@@ -308,9 +265,11 @@ export const StaffAugmentationLayout = ({ menu }: StaffAugmentationLayoutProps):
             </div>
           </div>
         </section>
+        <ServiceAnswers path="/it-staff-augmentation/" />
       </main>
     </HomeNavigation>
   )
 }
 
 const BulletList = ({ items }: { items: string[] }) => <ul>{items.map((item) => <li key={item}>{item}</li>)}</ul>
+import { ServiceAnswers } from './ServiceAnswers'

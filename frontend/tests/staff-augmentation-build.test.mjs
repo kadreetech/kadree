@@ -7,16 +7,16 @@ const pagesDirectory = new URL('../.next/server/pages/', import.meta.url)
 const readBuiltPage = async (filename) => readFile(new URL(filename, pagesDirectory), 'utf8')
 
 test('build preserves the legacy Staff page and generates the new SEO page', async () => {
-  const legacyPage = await readBuiltPage('staff-augmentation.html')
-  const newPage = await readBuiltPage('it-staff-augmentation.html')
+  const legacyPage = await readBuiltPage('tercerizacion-talento-ti.html')
+  const newPage = await readBuiltPage('ampliacion-equipos-ti.html')
 
   assert.match(legacyPage, /<main|<div/)
-  assert.match(newPage, /<link rel="canonical" href="https:\/\/www\.kadreetech\.com\/it-staff-augmentation\/"/)
+  assert.match(newPage, /<link rel="canonical" href="https:\/\/kadreetech\.com\/ampliacion-equipos-ti\/"/)
   assert.match(newPage, /<script type="application\/ld\+json"/)
 })
 
 test('new Staff page has one H1 and a complete semantic heading hierarchy', async () => {
-  const page = await readBuiltPage('it-staff-augmentation.html')
+  const page = await readBuiltPage('ampliacion-equipos-ti.html')
   const count = (tag) => (page.match(new RegExp(`<${tag}(?:\\s|>)`, 'g')) || []).length
 
   assert.equal(count('h1'), 1)
@@ -27,12 +27,12 @@ test('new Staff page has one H1 and a complete semantic heading hierarchy', asyn
 
 test('service menus point to the new Staff page instead of the legacy page', async () => {
   const [legacyPage, newPage] = await Promise.all([
-    readBuiltPage('staff-augmentation.html'),
-    readBuiltPage('it-staff-augmentation.html'),
+    readBuiltPage('tercerizacion-talento-ti.html'),
+    readBuiltPage('ampliacion-equipos-ti.html'),
   ])
 
   for (const page of [legacyPage, newPage]) {
-    assert.match(page, /href="\/it-staff-augmentation\/?"/)
-    assert.doesNotMatch(page, /href="\/staff-augmentation\/?"/)
+    assert.match(page, /href="\/ampliacion-equipos-ti\/?"/)
+    assert.doesNotMatch(page, /href="\/tercerizacion-talento-ti\/?"/)
   }
 })
